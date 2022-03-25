@@ -1,0 +1,7 @@
+table#myTable,tr,td,th {
+    border: 0.5px solid black;
+}
+
+table#myTable,thead {
+    background-color: #edffe4;
+}
