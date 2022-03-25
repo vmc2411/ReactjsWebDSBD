@@ -6,27 +6,45 @@ const customStyle = {
     margin: '0 auto'
 }
 
-class Add extends Component {
+class Edit extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
             tenloaisan: '',
             soluongnguoi: '',
             gia: ''
         }
     }
 
-    // When value changes of the fields
+    componentDidMount = () => {
+        this.getById();
+    }
+
+    // To get employee based on ID
+    getById() {
+        axios.get('/api/loaiSan/' + this.props.match.params.id)
+            .then((response) => {
+                this.setState({
+
+                    tenloaisan: response.data.tenloaisan,
+                    soluongnguoi: response.data.soluongnguoi,
+                    gia: response.data.gia
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
     handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value });
     }
 
-    // To add new employee when user submits the form
+    // To update the record on submit
     handleSubmit = (event) => {
         event.preventDefault();
         const { tenloaisan, soluongnguoi, gia } = this.state;
-        axios.post('/api/loaiSan/add', {
+        axios.put('api/loaiSan/update/' + this.props.match.params.id, {
 
             tenloaisan: tenloaisan,
             soluongnguoi: soluongnguoi,
@@ -34,11 +52,12 @@ class Add extends Component {
         })
             .then((response) => {
                 console.log(response);
-                this.props.history.push('/list');
+                this.props.history.push('/loaisan');
             })
             .catch((error) => {
                 console.log(error);
             });
+
     }
 
     render() {
@@ -89,4 +108,4 @@ class Add extends Component {
     }
 }
 
-export default Add;
+export default Edit;

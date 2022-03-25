@@ -3,14 +3,13 @@ import axios from 'axios';
 import { Table, Button } from 'react-bootstrap';
 // To use routing functionalities
 import { Link } from 'react-router-dom';
-import '../index.css';
 import Delete from './Deletes';
 
 var divStyle = {
     margin: '8% 8%',
 };
 
-class List extends Component {
+class Index extends Component {
 
     constructor(props) {
         super(props);
@@ -55,7 +54,7 @@ class List extends Component {
                             <th>Tên loại sân</th>
                             <th>Số lượng người</th>
                             <th>Giá</th>
-
+                            <th><Link to="/add">Add New</Link></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,13 +63,10 @@ class List extends Component {
                                 <Link to={"add/" + item._id} className="btn btn-primary">Add</Link>
                                 return (
                                     
-                                    <tr key={i}>                                    
+                                    <tr key={i}>                                                                
                                         <td>{item.tenloaisan}</td>
                                         <td>{item.soluongnguoi}</td>
-                                        <td>{item.gia}</td>      
-                                        <td>
-                                            <Link to={"add/" + item._id} className="btn btn-primary">Add</Link>
-                                        </td>                               
+                                        <td>{item.gia}</td>                                                                       
                                         <td>
                                             <Link to={item._id} className="btn btn-primary">Edit</Link>
                                         </td>
@@ -88,4 +84,4 @@ class List extends Component {
     }
 }
 
-export default List;
+export default Index;

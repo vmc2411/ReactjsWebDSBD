@@ -2,10 +2,9 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Home from './Home'
 import Product from './Product'
-import Test from './Test'
-import List from '../Components/List'
-import Add from '../Components/Add'
-import Edit from '../Components/Edit'
+import Index from './Loaisan/Index'
+import Add from './Loaisan/Add'
+import Edit from './Loaisan/Edit'
 
 
 function RouterPage() {
@@ -15,7 +14,7 @@ function RouterPage() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/product" exact component={Product} />
-          <Route path='/list' component={List} />
+          <Route path='/loaisan' exact component={Index} />
           <Route path='/add' component={Add} />
           <Route path='/:id' component={Edit} />
         </Switch>
