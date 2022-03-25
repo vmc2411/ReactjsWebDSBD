@@ -1,12 +1,14 @@
-const express = require('express')
-const app = express()
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
+const express = require('express');
+const mongoose = require('mongoose') ;
+const dotenv = require('dotenv') ;
+const cors = require('cors') ;
+
 
 
 const authRouter = require('./routes/auth')
 const postRouter = require('./routes/post')
-const loaisanRouter = require('./routes/loaisan')
+const app = express();
+
 
 
 dotenv.config();
@@ -27,13 +29,21 @@ const connectDB = async () => {
   };
   connectDB();
 
+  const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+
   //middleware
   app.use(express.json());
+  app.use(cors(corsOptions));
+ 
 
 
   app.use('/api/auth',authRouter)
   app.use('/api/posts',postRouter)
-  app.use('/api/loaiSan',loaisanRouter)
+  // app.use('/api/loaiSan',loaisanRouter)
 
 app.listen(8800,() =>{
     console.log("Backend server is running!")
