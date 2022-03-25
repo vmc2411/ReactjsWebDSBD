@@ -1,16 +1,12 @@
-const express = require('express')
-const router = express.Router()
-const verifyToken = require('../middleware/auth')
-
-const Post = require('../models/Post')
+const router = require("express").Router();
+const Post = require("../models/Post");
+const User = require("../models/User");
 
 //create a post
 router.post("/", verifyToken, async (req, res) => {
     const { title, desc, url, img } = req.body;
 
-    //Simple valadation
-    if (!title)
-        return res.status(400).json('Title is required');
+//update a post
 
     try {
         const newPost = new Post({
