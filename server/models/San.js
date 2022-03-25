@@ -13,7 +13,7 @@ const SanSchema = new Schema(
         },
         LoaiSan: {
             type: Schema.Types.ObjectId,
-            ref: 'loaisans',
+            ref: 'Loaisan',
         },
     },
     { timestamps: true }

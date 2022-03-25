@@ -1,120 +1,225 @@
-import React, { useEffect } from 'react'
-import axios from 'axios'
-import DataTable from 'react-data-table-component';
-import { Link } from 'react-router-dom'
-const columns = [
-  {
-    name: 'Tên sân',
-    selector: 'TenSan',
-    sortable: true,
-  },
-  {
-    name: 'Tình Trạng',
-    selector: 'TinhTrang',
-    sortable: true,
-  },
-  {
-    name: 'Loại Sân',
-    selector: 'LoaiSan',
-    sortable: true
-  },
-  {
-    name: 'Chức năng',
-    selector: 'ChucNang'
-  }
-];
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import DataTable from "react-data-table-component";
+
 const San = () => {
-    const [sans, sansSet] = React.useState([]);
-    useEffect(async () => {
-        let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWRkZGQ1MDIwMjY1YzY1Y2ZmYTAiLCJpYXQiOjE2NDc0NDY0NTd9.WdQVAxYyJeJDbzmW5zuV4tQibNJ9e0ZkjmgLRhFdJi8';
-        await axios.get('http://localhost:8800/api/sans', {
-            headers: {
-                Authorization: 'Kail ' + token //the token is a variable which holds the token
-            }
-        }).then(res => {
-            sansSet(res.data)
-            sans.forEach(item => {
-                item.ChucNang = `<div>
-                <Link to="${item._id}" className='btn btn-danger'>Xóa</Link>
-                <Link to="${item._id}" className='btn btn-info'>Sửa</Link>
-                </div>`;
-            })
-        })
+  const [sans, setSans] = useState([]);
+  const [san, setSan] = useState({ TenSan: "", LoaiSan: "" });
+  const [loaisans, setLoaiSans] = useState([]);
+  const [modal, setModal] = useState({ data: {} });
 
-    })
+  const modalShow = (row) => {
+    setModal({ data: row });
+  };
 
-    return (
+  function Delete(row) {
+    axios
+      .delete(`http://localhost:8800/api/sans/delete/${row._id}`)
+      .then((res) => {
+        setSans(
+          sans.filter((item) => {
+            return item._id !== res.data.san._id;
+          })
+        );
+      });
+  }
+
+  function handleChange(event) {
+    setSan((values) => ({
+      ...values,
+      [event.target.name]: event.target.value,
+    }));
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const { TenSan, LoaiSan } = san;
+    axios
+      .post("http://localhost:8800/api/sans/add", {
+        TenSan: TenSan,
+        LoaiSan: LoaiSan,
+      })
+      .then((response) => {
+        console.log(response.data.san)
+        setSans(sans.concat([response.data.san]))
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  useEffect(() => {
+    let abortController = new AbortController();
+
+    axios.get("http://localhost:8800/api/sans").then((res) => {
+      setSans(res.data);
+    });
+
+    axios.get("http://localhost:8800/api/loaisan").then((res) => {
+      setLoaiSans(res.data);
+    });
+    return () => {
+      abortController.abort();
+    };
+  }, []);
+
+  const columns = [
+    {
+      name: "Tên sân",
+      selector: (row) => row["TenSan"],
+      sortable: true,
+    },
+    {
+      name: "Tình Trạng",
+      selector: (row) => row["TinhTrang"],
+      sortable: true,
+    },
+    {
+      name: "Tên loại sân",
+      selector: (row) => row["LoaiSan"].tenloaisan,
+      sortable: true,
+    },
+    {
+      name: "Thao tác",
+      cell: (row) => (
         <>
-            <h3>Quản lý sân bóng</h3>
-            <DataTable columns={columns} data={sans} prop>
-            </DataTable>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => modalShow(row)}
+            data-toggle="modal"
+            data-target="#Modal"
+          >
+            <i className="fas fa-edit"></i>
+          </button>
+
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={() => Delete(row)}
+          >
+            <i className="fas fa-times-circle"></i>
+          </button>
         </>
-    )
-}
+      ),
+    },
+  ];
 
-export default San
+  return (
+    <>
+      <h3>Danh sách sân banh</h3>
+      <div className="row my-2 px-2">
+        <form method="post" onSubmit={handleSubmit}>
+          <div className="row align-items-center g-3">
+            <div className="col-auto">
+              <label htmlFor="tensan">Tên sân</label>
+              <input
+                type="text"
+                name="TenSan"
+                className="form-control"
+                id="TenSan"
+                value={san.TenSan || ""}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="col-auto">
+              <label htmlFor="loaisan">Loại sân</label>
+              <select
+                className="form-control"
+                value={san.LoaiSan || ""}
+                id="loaisan"
+                name="LoaiSan"
+                onChange={handleChange}
+              >
+                {loaisans.map((item) => {
+                  return (
+                    <option value={item._id} key={item._id}>
+                      {item.tenloaisan}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+            <div className="col-auto align-self-end">
+              <button type="submit" className="btn btn-primary">
+                <i className="fas fa-plus-circle"></i>Thêm
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
 
-// import React from "react";
-// import axios from "axios";
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import "jquery/dist/jquery.min.js";
-// import "datatables.net-dt/js/dataTables.dataTables";
-// import "datatables.net-dt/css/jquery.dataTables.min.css";
-// import $ from "jquery";
-// class San extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       error: null,
-//       isLoaded: false,
-//       items: [],
-//     };
-//   }
+      <DataTable columns={columns} data={sans} pagination></DataTable>
 
-//   componentDidMount() {
-//     $(document).ready(function () {
-//       $("#example").DataTable();
-//     });
+      <div className="modal fade" id="Modal" tabIndex={-1}>
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">
+                Cập nhật thông tin
+              </h5>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div className="modal-body">
+              <form>
+                <div className="form-group">
+                  <label htmlFor="tensan">Tên sân</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="tensan"
+                    value={modal.data.TenSan}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="tinhtrang">Tình trạng</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="tinhtrang"
+                    value={modal.data.TinhTrang}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="loaisan">Loại sân</label>
+                  <select className="form-control" id="loaisan">
+                    {loaisans.map((item) => {
+                      return (
+                        <option value={item._id} key={item._id}>
+                          {item.tenloaisan}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+              </form>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" className="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
-//     let token =
-//       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWRkZGQ1MDIwMjY1YzY1Y2ZmYTAiLCJpYXQiOjE2NDc0NDY0NTd9.WdQVAxYyJeJDbzmW5zuV4tQibNJ9e0ZkjmgLRhFdJi8";
-//     axios
-//       .get("http://localhost:8800/api/sans", {
-//         headers: {
-//           Authorization: "Kail " + token,
-//         },
-//       })
-//       .then((res) => {
-//         this.setState({
-//           isLoaded: true,
-//           items: res.data,
-//         });
-//       });
-//   }
-//   render() {
-//     const { error, isLoaded, items } = this.state;
-//     return (
-//       <table id="example" className="display">
-//         <thead>
-//           <tr>
-//             <th>Tên Sân</th>
-//             <th>Tình Trạng</th>
-//             <th>Loại sân</th>
-//             <th>Chức năng</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {items.map((item) => {
-//             <tr key={item._id}>
-//               <td>{item}</td>
-//               <td>{item.TinhTrang}</td>
-//               <td>{item.LoaiSan}</td>
-//               <td></td>
-//             </tr>;
-//           })}
-//         </tbody>
-//       </table>
-//     );
-//   }
-// }
-// export default San;
+export default San;

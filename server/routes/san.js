@@ -6,13 +6,24 @@ let sanModel = require("../models/San");
 
 //create
 router.route('/add').post(function (req, res) {
-    let san = new sanModel(req.body);
+    const { TenSan, LoaiSan } = req.body;
+    
+    let san = new sanModel(
+        {
+            TenSan,
+            TinhTrang: 'Đang hoạt động',
+            LoaiSan
+        }
+    );
     san.save()
-        .then(() => {
-            res.status(200).json({ 'san': 'Đã thêm sân thành công!' });
+        .then((san) => {
+            res.status(200).json({
+                'message': 'Đã thêm sân thành công!',
+                san: san
+            });
         })
         .catch(err => {
-            res.status(400).send("Something Went Wrong");
+            res.status(400).send(err);
         });
 });
 
@@ -38,23 +49,25 @@ router.route('/update/:id').put(function (req, res) {
 
 //delete
 router.route('/delete/:id').delete(function (req, res) {
-    sanModel.findByIdAndRemove({ _id: req.params.id }, function (err, san) {
+    sanModel.findByIdAndRemove({ _id: req.params.id }, function (err, deletedSan) {
         if (err) res.json(err);
-        else res.json('Loaisan Deleted Successfully');
+        else res.json({
+            message: 'Delete success!',
+            san: deletedSan
+        });
     });
 });
 
 
 //get all loaisan
-router.route('/').get(function (req, res) {
-    sanModel.find(function (err, san) {
-        if (err) {
-            console.log(err);
-        }
-        else {
-            res.json(san);
-        }
-    });
+router.route('/').get(async function (req, res) {
+    try {
+        const san = await sanModel.find().populate('LoaiSan');
+        res.json(san);
+    } catch (error) {
+        console.log(error)
+        res.status(500).json('Internal server error');
+    }
 });
 
 //get byid loaisan

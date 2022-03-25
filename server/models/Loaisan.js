@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const LoaisanSchema = new mongoose.Schema(
   {
-
     tenloaisan: {
       type: String,
       max: 500,

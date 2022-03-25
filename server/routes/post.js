@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Post = require("../models/Post");
 const User = require("../models/User");
-
+const verifyToken = require('../middleware/auth')
 //create a post
 router.post("/", verifyToken, async (req, res) => {
     const { title, desc, url, img } = req.body;
@@ -25,7 +25,7 @@ router.post("/", verifyToken, async (req, res) => {
 });
 
 //get a post
-router.get("/", verifyToken, async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         const posts = await Post.find({ user: req.userId }).populate('user', ['username']);
         res.status(200).json({ success: true, posts });
