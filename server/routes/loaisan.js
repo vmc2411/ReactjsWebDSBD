@@ -1,62 +1,69 @@
-const router = require("express").Router();
+const express = require('express');
 
-const Loaisan = require("../models/Loaisan");
+const app = express();
+const router = express.Router();
+let loaisanModel = require("../models/Loaisan");
 
 //create
-router.post("/", async (req,res)=>{
-    const newLoaisan = new Loaisan(req.body);
-    try {
-        const savedLoaisan = await newLoaisan.save();
-        res.status(200).json(savedLoaisan);
-      } catch (err) {
-        res.status(500).json(err);
-      }
-})
+router.route('/add').post(function (req, res) {
+  let loaisan = new loaisanModel(req.body);
+  loaisan.save()
+    .then(() => {
+      res.status(200).json({ 'loaisan': 'Loaisan Added Successfully!' });
+    })
+    .catch(err => {
+      res.status(400).send("Something Went Wrong");
+    });
+});
 
 //update
-router.put("/:id", async (req, res) => {
-    try {
-      const updatedLoaisan = await Loaisan.findByIdAndUpdate(
-        req.params.id,
-        {
-          $set: req.body,
-        },
-        { new: true }
-      );
-      res.status(200).json(updatedLoaisan);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  });
+router.route('/update/:id').put(function (req, res) {
+  loaisanModel.findById(req.params.id, function (err, loaisan) {
+    if (!loaisan)
+      return next(new Error('Unable To Find Loaisan With This Id'));
+    else {
+      loaisan.tenloaisan = req.body.tenloaisan;
+      loaisan.soluongnguoi = req.body.soluongnguoi;
+      loaisan.gia = req.body.gia;
 
-  //delete
-  router.delete("/:id", async (req, res) => {
-    try {
-      await Loaisan.findByIdAndDelete(req.params.id);
-      res.status(200).json("Loại sân đã được xóa!");
-    } catch (err) {
-      res.status(500).json(err);
+      loaisan.save().then(emp => {
+        res.json('Loaisan Updated Successfully');
+      })
+        .catch(err => {
+          res.status(400).send("Unable To Update Loaisan");
+        });
     }
   });
+});
 
-  //get loaisan
-  router.get("/find/:id", async (req, res) => {
-    try {
-      const loaisan = await Loaisan.findById(req.params.id);
-      res.status(200).json(loaisan);
-    } catch (err) {
-      res.status(500).json(err);
-    }
+//delete
+router.route('/delete/:id').delete(function (req, res) {
+  loaisanModel.findByIdAndRemove({ _id: req.params.id }, function (err, loaisan) {
+    if (err) res.json(err);
+    else res.json('Loaisan Deleted Successfully');
   });
+});
 
-  //get all loaisan
-  router.get("/", async (req, res) => {
-    try {
-      const loaisan = await Loaisan.find();
-      res.status(200).json(loaisan);
-    } catch (err) {
-      res.status(500).json(err);
+
+//get all loaisan
+router.route('/').get(function (req, res) {
+  loaisanModel.find(function (err, loaisan) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.json(loaisan);
     }
   });
+});
+
+//get byid loaisan
+router.route('/:id').get(function (req, res) {
+  let id = req.params.id;
+  loaisanModel.findById(id, function (err, loaisan) {
+    res.json(loaisan);
+  });
+});
+
 
 module.exports = router; 

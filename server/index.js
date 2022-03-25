@@ -2,12 +2,14 @@ const express = require('express');
 const mongoose = require('mongoose') ;
 const dotenv = require('dotenv') ;
 const cors = require('cors') ;
-
+const app = express();
+bodyParser = require('body-parser');
 
 
 const authRouter = require('./routes/auth')
 const postRouter = require('./routes/post')
-const app = express();
+const loaisanRouter = require('./routes/loaisan');
+
 
 
 
@@ -38,12 +40,16 @@ const connectDB = async () => {
   //middleware
   app.use(express.json());
   app.use(cors(corsOptions));
- 
+  app.use(bodyParser.json());
 
 
   app.use('/api/auth',authRouter)
   app.use('/api/posts',postRouter)
-  // app.use('/api/loaiSan',loaisanRouter)
+  app.use('/api/loaiSan',loaisanRouter)
+
+
+
+
 
 app.listen(8800,() =>{
     console.log("Backend server is running!")
