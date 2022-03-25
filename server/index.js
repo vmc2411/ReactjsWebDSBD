@@ -2,10 +2,11 @@ const express = require('express')
 const app = express()
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const cors = require('cors')
 
 const authRouter = require('./routes/auth')
 const postRouter = require('./routes/post')
-
+const sanRouter = require('./routes/san')
 
 dotenv.config();
 
@@ -27,10 +28,11 @@ const connectDB = async () => {
 
   //middleware
   app.use(express.json());
-
+  app.use(cors())
 
   app.use('/api/auth',authRouter)
   app.use('/api/posts',postRouter)
+  app.use('/api/sans',sanRouter)
 
 app.listen(8800,() =>{
     console.log("Backend server is running!")

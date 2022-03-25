@@ -2,8 +2,8 @@ POST http://localhost:8800/api/auth/register
 Content-Type: application/json
 
 {
-    "username": "kail",
-    "password": "kail2411"
+    "username": "truong",
+    "password": "truong"
 }
 
 ###
@@ -22,10 +22,10 @@ Content-Type: application/json
 Authorization: Kail eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWRkZGQ1MDIwMjY1YzY1Y2ZmYTAiLCJpYXQiOjE2NDc0NDU2NzB9.r_hoK-m8TVXX5GbfecchPehc_vyEUggeyQ0kY3NwS3c
 
 {
-    "title": "my second post",
-    "desc": "hello",
-    "url": "youtube.com",
-    "img": "one"
+    "title": "React",
+    "desc": "React",
+    "url": "React.com",
+    "img": "react"
 }
 
 ###
@@ -50,3 +50,39 @@ Authorization: Kail eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWR
 
 DELETE http://localhost:8800/api/posts/62320f30d3afff5877dc2ba5
 Authorization: Kail eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWRkZGQ1MDIwMjY1YzY1Y2ZmYTAiLCJpYXQiOjE2NDc0NDU2NzB9.r_hoK-m8TVXX5GbfecchPehc_vyEUggeyQ0kY3NwS3c
+
+###
+
+GET http://localhost:8800/api/sans
+Authorization: Kail eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWRkZGQ1MDIwMjY1YzY1Y2ZmYTAiLCJpYXQiOjE2NDc0NDY0NTd9.WdQVAxYyJeJDbzmW5zuV4tQibNJ9e0ZkjmgLRhFdJi8
+
+###
+
+POST http://localhost:8800/api/sans/add
+Content-Type: application/json
+
+{
+    "TenSan": "San B",
+    "TinhTrang": "Đang hoạt động",
+    "LoaiSan": "623b39589b6f6873e44ccfc7"
+}
+
+###
+
+GET http://localhost:8800/api/sans
+Authorization: Kail eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWRkZGQ1MDIwMjY1YzY1Y2ZmYTAiLCJpYXQiOjE2NDc0NDY0NTd9.WdQVAxYyJeJDbzmW5zuV4tQibNJ9e0ZkjmgLRhFdJi8
+
+###
+
+PUT http://localhost:8800/api/sans/update/623d62f1ab5b1b9bc43b3839
+Content-Type: application/json
+
+{
+    "TenSan": "San C",
+    "TinhTrang": "Đang hoạt động",
+    "LoaiSan": "623b39589b6f6873e44ccfc7"
+}
+
+###
+
+DELETE http://localhost:8800/api/sans/delete/623d62f1ab5b1b9bc43b3839
