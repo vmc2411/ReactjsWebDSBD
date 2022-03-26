@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../UserLayout/Header'
 import Footer from '../UserLayout/Footer'
-const Dashboard = () => {
+const UserLayout = () => {
     return (
         <div>
             <Header/>
@@ -11,4 +11,4 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard
+export default UserLayout
