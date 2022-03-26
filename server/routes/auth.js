@@ -47,31 +47,36 @@ router.post("/register", async (req, res) => {
 });
 //LOGIN
 router.post("/login", async (req, res) => {
-  const { username, password } = req.body;
-  //Simple valadation
-  if (!username || !password)
-    return res
-      .status(404)
-      .json({ success: false, message: "Missing username or password" });
-  try {
-    //check user
-    const user = await User.findOne({ username });
-    if (!user) return res.status(404).json("Username and password wrong!");
-    //check password
-    const passwordValid = await argon2.verify(user.password, password);
-    if (!passwordValid)
-      return res.status(404).json("Username and password wrong!");
-    //return token
-    const accessToken = jwt.sign(
-      { userId: user._id },
-      process.env.ACCESS_TOKEN_SECRET
-    );
-    res
-      .status(200)
-      .json({ success: true, message: "Loggin successfully", accessToken });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json("Username and password wrong!");
-  }
+    const { username, password } = req.body;
+    //Simple valadation
+    if (!username || !password)
+        return res
+            .status(404)
+            .json({ success: false, message: "Missing username or password" });
+    try {
+        //check user
+        const user = await User.findOne({ username })
+        if(!user) return res
+        .status(404)
+        .json("Username and password wrong!");
+        //check password
+        const passwordValid = await argon2.verify(user.password,password)
+        if(!passwordValid) return res
+        .status(404)
+        .json("Username and password wrong!");
+
+        //return token
+        const accessToken = jwt.sign(
+            { userId: user._id },
+            process.env.ACCESS_TOKEN_SECRET
+        );
+
+        res
+            .status(200)
+            .json({ success: true, message: "Loggin successfully", accessToken });   
+    } catch (err) {
+        console.log(error)
+        res.status(500).json("Username and password wrong!");
+    }
 });
 module.exports = router;
