@@ -21,13 +21,13 @@ const Sidebar = () => {
                 <nav className="mt-2">
                     <ul className="nav nav-pills nav-sidebar flex-column text-white" data-widget="treeview" role="menu" data-accordion="false">
                         <li className="nav-item">
-                            <Link to={''} className="nav-link">
+                            <a className="nav-link">
                                 <i className="nav-icon far fa-calendar-alt" />
                                 <p>
                                     Sân banh
                                     <i className="fas fa-angle-left right" />
                                 </p>
-                            </Link>
+                            </a>
                             <ul className="nav nav-treeview">
                                 <li className="nav-item">
                                     <Link to={'/admin/san'} className="nav-link">
@@ -36,7 +36,7 @@ const Sidebar = () => {
                                     </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to={'/admin'} className="nav-link">
+                                    <Link to={'/admin/loaisan'} className="nav-link">
                                         <i className="fas fa-angle-right nav-icon" />
                                         <p>Danh sách loại sân</p>
                                     </Link>

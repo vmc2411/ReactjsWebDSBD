@@ -25,7 +25,6 @@ class Edit extends Component {
         axios.get('/api/loaiSan/' + this.props.match.params.id)
             .then((response) => {
                 this.setState({
-
                     tenloaisan: response.data.tenloaisan,
                     soluongnguoi: response.data.soluongnguoi,
                     gia: response.data.gia

@@ -7,20 +7,24 @@ let sanModel = require("../models/San");
 //create
 router.route('/add').post(function (req, res) {
     const { TenSan, LoaiSan } = req.body;
-    
-    let san = new sanModel(
+
+    let newSan = new sanModel(
         {
             TenSan,
             TinhTrang: 'Đang hoạt động',
             LoaiSan
         }
     );
-    san.save()
-        .then((san) => {
-            res.status(200).json({
-                'message': 'Đã thêm sân thành công!',
-                san: san
-            });
+    newSan.save()
+        .then(() => {
+            sanModel
+                .populate(newSan, { path: "LoaiSan" })
+                .then(san => {
+                    res.status(200).json({
+                        'message': 'Đã thêm sân thành công!',
+                        san: san
+                    });
+                })
         })
         .catch(err => {
             res.status(400).send(err);
@@ -58,7 +62,6 @@ router.route('/delete/:id').delete(function (req, res) {
     });
 });
 
-
 //get all loaisan
 router.route('/').get(async function (req, res) {
     try {
@@ -71,10 +74,13 @@ router.route('/').get(async function (req, res) {
 });
 
 //get byid loaisan
-router.route('/edit/:id').get(function (req, res) {
+router.route('/:id').get(function (req, res) {
     let id = req.params.id;
     sanModel.findById(id, function (err, san) {
-        res.json(loaisan);
+        if (err) {
+            res.json(err);
+        }
+        res.json(san);
     });
 });
 

@@ -54,9 +54,9 @@ class Index extends Component {
                             <th>Tên loại sân</th>
                             <th>Số lượng người</th>
                             <th>Giá</th>
-                            <th><Link to="/add">Add New</Link></th>
+                            <th><Link to="/admin/loaisan/add">Add New</Link></th>
                         </tr>
-                    </thead>
+                    </thead>    
                     <tbody>
                         {
                             loaisan && loaisan.map((item, i) => {
