@@ -11,13 +11,7 @@ const LoaisanSchema = new mongoose.Schema(
     },
     gia: {
       type: Number,
-    },
-    San: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'sans',
-      }
-    ]
+    }
   },
 
 );
