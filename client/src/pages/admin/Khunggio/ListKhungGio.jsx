@@ -62,7 +62,7 @@ const KhungGio = () => {
 
   return (
     <>
-      <h3>Danh sách loại sân</h3>
+      <h3>Danh sách khung giờ</h3>
       <Link to={"/admin/khunggio/add"} className="btn btn-primary mb-2">
         <i className="fas fa-plus-circle"></i>
         Thêm mới

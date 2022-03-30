@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 const KhunggioSchema = new mongoose.Schema(
   {
     thoigianbatdau: {
-      type: Date,
+      type: String,
     },
     thoigianketthuc: {
-      type: Date,
+      type: String,
     },
     hesogia: {
       type: Number,
