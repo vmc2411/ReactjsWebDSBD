@@ -7,7 +7,7 @@ const sendToken = require("../jwt/jwt");
 
 //REGISTER
 router.post("/register", async (req, res) => {
-  const { username, password } = req.body;
+  const { fullname, username, password, isAdmin } = req.body;
   if (!username || !password)
     return res.status(404).json({
       success: false,
@@ -25,8 +25,10 @@ router.post("/register", async (req, res) => {
     const hashedPassword = await argon2.hash(password);
     //create new user
     const newUser = new User({
+      fullname,
       username,
       password: hashedPassword,
+      isAdmin,
     });
 
     //save newuser in data
@@ -76,7 +78,12 @@ router.post("/login", async (req, res) => {
 
     res
       .status(200)
-      .json({ success: true, message: "Loggin successfully", accessToken });
+      .json({
+        success: true,
+        fullname: user.fullname,
+        message: "Loggin successfully",
+        accessToken,
+      });
   } catch (err) {
     console.log(error);
     res.status(500).json("Username and password wrong!");

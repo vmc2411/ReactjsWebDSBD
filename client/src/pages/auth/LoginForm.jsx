@@ -18,6 +18,8 @@ const LoginForm = () => {
       .post("http://localhost:8800/api/auth/login", request)
       .then((res) => {
         const result = res.data.message;
+        window.localStorage.setItem('fullname', res.data.fullname)
+        window.localStorage.setItem('accesstoken', res.data.accessToken)
         alert(result);
         navigate("/");
       })

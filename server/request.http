@@ -2,8 +2,10 @@ POST http://localhost:8800/api/auth/register
 Content-Type: application/json
 
 {
+    "fullname": "Phan Trần Hoàng Hiệp",
     "username": "hiep",
-    "password": "hiep3110"
+    "password": "hiep3110",
+    "isAdmin": 0
 }
 
 ###
