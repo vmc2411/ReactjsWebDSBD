@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import logo from '../../images/logo/footbal_logo.png'
-import avatar from '../../images/user/user_icon.png'
+import logo from '../../assets/images/logo/footbal_logo.png'
+import avatar from '../../assets/images/user/user_icon.png'
 const Sidebar = () => {
     return (
         <div className="main-sidebar sidebar-dark-primary elevation-4">

@@ -5,8 +5,6 @@
 
 $(document).ready(function () {
     $.widget.bridge('uibutton', $.ui.button);
-
-    $('#myTable').DataTable();
     
     $(function () {
         $('.bs-timepicker').timepicker();
