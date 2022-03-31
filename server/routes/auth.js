@@ -64,11 +64,13 @@ router.post("/login", async (req, res) => {
         if(!passwordValid) return res
         .status(404)
         .json("Username and password wrong!");
+
         //return token
         const accessToken = jwt.sign(
             { userId: user._id },
             process.env.ACCESS_TOKEN_SECRET
         );
+
         res
             .status(200)
             .json({ success: true, message: "Loggin successfully", accessToken });   

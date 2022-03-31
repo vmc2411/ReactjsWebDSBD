@@ -1,12 +1,18 @@
-const express = require('express')
-const app = express()
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
+const express = require('express');
+const mongoose = require('mongoose') ;
+const dotenv = require('dotenv') ;
+const cors = require('cors') ;
+const app = express();
+bodyParser = require('body-parser');
+
 
 const authRouter = require('./routes/auth')
 const postRouter = require('./routes/post')
 const loaitintucRouter = require('./routes/loaitintuc')
 const tintucRouter = require('./routes/tintuc')
+const loaisanRouter = require('./routes/loaisan')
+const sanRouter = require('./routes/san')
+const khunggioRouter = require('./routes/khunggio')
 
 
 dotenv.config();
@@ -27,14 +33,27 @@ const connectDB = async () => {
   };
   connectDB();
 
+  const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+
   //middleware
   app.use(express.json());
+  app.use(cors(corsOptions));
+  app.use(bodyParser.json());
 
 
   app.use('/api/auth',authRouter)
   app.use('/api/posts',postRouter)
   app.use('/api/loaitintuc', loaitintucRouter )
   app.use('/api/tintuc', tintucRouter)
+  app.use('/api/loaiSan',loaisanRouter)
+  app.use('/api/sans',sanRouter)
+  app.use('/api/khungGio',khunggioRouter)
+
+
 
 app.listen(8800,() =>{
     console.log("Backend server is running!")

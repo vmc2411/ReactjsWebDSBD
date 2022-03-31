@@ -5,7 +5,6 @@ function Home() {
   return (
     <React.Fragment>
             <header class="header mb-5">
-
                 <div id="top">
                     <div class="container">
                         <div class="row">
