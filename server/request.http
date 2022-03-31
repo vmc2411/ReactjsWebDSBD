@@ -50,3 +50,19 @@ Authorization: Kail eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWR
 
 DELETE http://localhost:8800/api/posts/62320f30d3afff5877dc2ba5
 Authorization: Kail eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWRkZGQ1MDIwMjY1YzY1Y2ZmYTAiLCJpYXQiOjE2NDc0NDU2NzB9.r_hoK-m8TVXX5GbfecchPehc_vyEUggeyQ0kY3NwS3c
+
+
+###
+POST http://localhost:8800/api/loaitintuc/add
+Content-Type: application/json
+Authorization: Kail eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWRkZGQ1MDIwMjY1YzY1Y2ZmYTAiLCJpYXQiOjE2NDc0NDU2NzB9.r_hoK-m8TVXX5GbfecchPehc_vyEUggeyQ0kY3NwS3c
+
+{
+    "tenloaitintuc": "bóng đá ngoại hạng anh"
+}
+
+###
+
+GET http://localhost:8800/api/loaitintuc
+Authorization: Kail eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWRkZGQ1MDIwMjY1YzY1Y2ZmYTAiLCJpYXQiOjE2NDc0NDY0NTd9.WdQVAxYyJeJDbzmW5zuV4tQibNJ9e0ZkjmgLRhFdJi8
+

@@ -5,6 +5,8 @@ const dotenv = require("dotenv");
 
 const authRouter = require('./routes/auth')
 const postRouter = require('./routes/post')
+const loaitintucRouter = require('./routes/loaitintuc')
+const tintucRouter = require('./routes/tintuc')
 
 
 dotenv.config();
@@ -31,6 +33,8 @@ const connectDB = async () => {
 
   app.use('/api/auth',authRouter)
   app.use('/api/posts',postRouter)
+  app.use('/api/loaitintuc', loaitintucRouter )
+  app.use('/api/tintuc', tintucRouter)
 
 app.listen(8800,() =>{
     console.log("Backend server is running!")
