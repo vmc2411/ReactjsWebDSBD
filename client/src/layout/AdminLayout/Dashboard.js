@@ -8,7 +8,6 @@ import AddSan from '../../pages/admin/San/AddSan'
 import EditSan from '../../pages/admin/San/EditSan'
 
 import Add from '../../pages/admin/Loaisan/Add';
-import Delete from '../../pages/admin/Loaisan/Deletes';
 import Edit from '../../pages/admin/Loaisan/Edit';
 import Index from '../../pages/admin/Loaisan/Index';
 

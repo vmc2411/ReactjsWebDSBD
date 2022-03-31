@@ -42,14 +42,10 @@ const connectDB = async () => {
   app.use(cors(corsOptions));
   app.use(bodyParser.json());
 
-
   app.use('/api/auth',authRouter)
   app.use('/api/posts',postRouter)
   app.use('/api/loaiSan',loaisanRouter)
   app.use('/api/sans',sanRouter)
-
-
-
 
 app.listen(8800,() =>{
     console.log("Backend server is running!")

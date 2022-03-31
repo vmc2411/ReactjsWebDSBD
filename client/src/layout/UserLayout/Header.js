@@ -1,13 +1,13 @@
 import React from "react";
-import { Link ,useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const accestoken = window.localStorage.getItem("accesstoken");
   const fullname = window.localStorage.getItem("fullname");
-  const navigate = useNavigate()
   function logout (){
-    window.localStorage.clear();
-    navigate("/");
+    localStorage.removeItem('iduser');
+    localStorage.removeItem('fullname');
+    localStorage.removeItem('accesstoken');
   }
   return (
     <header className="header">

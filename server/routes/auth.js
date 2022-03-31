@@ -3,7 +3,6 @@ const router = express.Router();
 const argon2 = require("argon2");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
-const sendToken = require("../jwt/jwt");
 
 //REGISTER
 router.post("/register", async (req, res) => {
@@ -47,6 +46,7 @@ router.post("/register", async (req, res) => {
     console.log(err);
   }
 });
+
 //LOGIN
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
@@ -76,17 +76,69 @@ router.post("/login", async (req, res) => {
       process.env.ACCESS_TOKEN_SECRET
     );
 
+    res.status(200).json({
+      _id: user._id,
+      success: true,
+      fullname: user.fullname,
+      message: "Loggin successfully",
+      accessToken,
+    });
+  } catch (err) {
+    console.log(err);
     res
-      .status(200)
-      .json({
+      .status(500)
+      .json({ success: false, message: "Username or Password was wrong!" });
+  }
+});
+
+//LOGINADMIN
+router.post("/admin/login", async (req, res) => {
+  const { username, password } = req.body;
+  //Simple valadation
+  if (!username || !password)
+    return res
+      .status(404)
+      .json({ success: false, message: "Missing username or password" });
+  try {
+    //check user
+    const user = await User.findOne({ username });
+    if (!user)
+      return res
+        .status(404)
+        .json({ success: false, message: "Username or Password was wrong !" });
+    //check password
+    const passwordValid = await argon2.verify(user.password, password);
+    if (!passwordValid)
+      return res
+        .status(404)
+        .json({ success: false, message: "Username or Password was wrong!" });
+    //check isadmin
+    if (user.isAdmin != true) {
+      return res
+        .status(404)
+        .json({ success: false, message: "You are not Admin !" });
+    } else {
+      //return token
+      const accessToken = jwt.sign(
+        { userId: user._id },
+        process.env.ACCESS_TOKEN_SECRET
+      );
+
+      res.status(200).json({
+        _id: user._id,
         success: true,
         fullname: user.fullname,
         message: "Loggin successfully",
+        isAdmin: user.isAdmin,
         accessToken,
       });
+    }
   } catch (err) {
-    console.log(error);
-    res.status(500).json("Username and password wrong!");
+    console.log(err);
+    res
+      .status(500)
+      .json({ success: false, message: "Username or Password was wrong!" });
   }
 });
+
 module.exports = router;
