@@ -8,9 +8,9 @@ bodyParser = require('body-parser');
 
 const authRouter = require('./routes/auth')
 const postRouter = require('./routes/post')
-const loaisanRouter = require('./routes/loaisan');
+const loaisanRouter = require('./routes/loaisan')
 const sanRouter = require('./routes/san')
-
+const khunggioRouter = require('./routes/khunggio')
 
 
 dotenv.config();
@@ -47,7 +47,7 @@ const connectDB = async () => {
   app.use('/api/posts',postRouter)
   app.use('/api/loaiSan',loaisanRouter)
   app.use('/api/sans',sanRouter)
-
+  app.use('/api/khungGio',khunggioRouter)
 
 
 

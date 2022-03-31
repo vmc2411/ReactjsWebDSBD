@@ -42,7 +42,7 @@ const Sidebar = () => {
                                     </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to={'/admin'} className="nav-link">
+                                    <Link to={'/admin/khunggio'} className="nav-link">
                                         <i className="fas fa-angle-right nav-icon" />
                                         <p>Danh sách khung giờ</p>
                                     </Link>
