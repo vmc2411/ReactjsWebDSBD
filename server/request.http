@@ -104,3 +104,58 @@ Content-Type: application/json
     "soluongnguoi": 10,
     "gia": 500000
 }
+
+###
+GET http://localhost:8800/api/khunggio
+
+###
+
+POST http://localhost:8800/api/hoadon/add
+Content-Type: application/json
+
+{
+    "TongTien": 700000
+}
+
+###
+
+PUT http://localhost:8800/api/hoadon/update/6245c10d1147ca955ffbf3c3
+Content-Type: application/json
+
+
+###
+GET http://localhost:8800/api/hoadon
+
+###
+
+POST http://localhost:8800/api/phieudatsan/add
+Content-Type: application/json
+
+{
+    "TongTien": 1500,
+    "IDHoaDon": "6245c0ce1147ca955ffbf3c1",
+    "userID": "6231edddd5020265c65cffa0"
+}
+
+###
+
+DELETE http://localhost:8800/api/phieudatsan/delete/6245d012707f932ec247c390
+
+###
+GET http://localhost:8800/api/phieudatsan
+
+###
+
+POST http://localhost:8800/api/chitietphieudatsan/add
+Content-Type: application/json
+
+{ 
+    "IDPhieuDatSan": "6245d68793a321f7bd782c82", 
+    "IDSan": "623f125c93169afa4e4fe71e", 
+    "NgayDa": "2022-03-31", 
+    "ThanhTien": 5000000, 
+    "IDKhunggio": "62447040be07951b73251bb2"
+}
+
+###
+GET http://localhost:8800/api/chitietphieudatsan
