@@ -2,42 +2,42 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import DataTable from "react-data-table-component";
 import { Link } from "react-router-dom";
-const LoaiSan = () => {
-  const [Loaisan, setLoaisan] = useState([]);
+const KhungGio = () => {
+  const [Khunggio, setKhunggio] = useState([]);
 
   function Delete(row) {
     axios
-      .delete(`/api/loaiSan/delete/${row._id}`)
+      .delete(`/api/khungGio/delete/${row._id}`)
       .then((res) => {
-        setLoaisan(
-            Loaisan.filter((item) => {
-            return item._id !== res.data.loaisan._id;
+        setKhunggio(
+          Khunggio.filter((item) => {
+            return item._id !== res.data.khunggio._id;
           })
         );
       });
   }
 
   useEffect(() => {
-    axios.get("/api/loaiSan").then((res) => {
+    axios.get("/api/khungGio").then((res) => {
         console.log(res.data)
-        setLoaisan(res.data);
+        setKhunggio(res.data);
     });
   }, []);
 
   const columns = [
     {
-      name: "Tên loại sân",
-      selector: (row) => row["tenloaisan"],
+      name: "Thời gian bắt đầu",
+      selector: (row) => row["thoigianbatdau"],
       sortable: true,
     },
     {
-      name: "Số lượng người",
-      selector: (row) => row["soluongnguoi"],
+      name: "Thời gian kết thúc",
+      selector: (row) => row["thoigianketthuc"],
       sortable: true,
     },
     {
-      name: "Giá",
-      selector: (row) => row["gia"],
+      name: "Hệ số giá",
+      selector: (row) => row["hesogia"],
       sortable: true,
     },
     {
@@ -62,14 +62,14 @@ const LoaiSan = () => {
 
   return (
     <>
-      <h3>Danh sách loại sân</h3>
-      <Link to={"/admin/loaisan/add"} className="btn btn-primary mb-2">
+      <h3>Danh sách khung giờ</h3>
+      <Link to={"/admin/khunggio/add"} className="btn btn-primary mb-2">
         <i className="fas fa-plus-circle"></i>
         Thêm mới
       </Link>
-      <DataTable columns={columns} data={Loaisan} pagination></DataTable>
+      <DataTable columns={columns} data={Khunggio} pagination></DataTable>
     </>
   );
 };
 
-export default LoaiSan;
+export default KhungGio;

@@ -15,6 +15,25 @@ const ChiTietSan = () => {
       gia: 0,
     },
   });
+  const [khunggio, setKhunggio] = useState([
+    {
+      _id: "",
+      thoigianbatdau: "",
+      thoigianketthuc: "",
+      hesogia: 0,
+    },
+  ]);
+
+  function getKhunggios() {
+    axios
+      .get(`/api/khunggio`)
+      .then((res) => {
+        return res.data;
+      })
+      .then((data) => {
+        setKhunggio(data);
+      });
+  }
 
   useEffect(() => {
     axios
@@ -25,7 +44,7 @@ const ChiTietSan = () => {
       .then((data) => {
         setSan(data);
       });
-
+    getKhunggios();
   }, []);
 
   return (
@@ -140,11 +159,23 @@ const ChiTietSan = () => {
                             Tiến hành đặt sân
                           </button>
                         </div>
+                        <label className="col-form-label mt-1 font-weight-bold">
+                          Chọn khung giờ còn trống:
+                        </label>
+                        <div className="col-auto">
+                          <select className="form-control" name="" id="">
+                            {khunggio.map((item, index) => {
+                              return (
+                                <option value={item._id} key={index}>
+                                  {item.thoigianbatdau +
+                                    " - " +
+                                    item.thoigianketthuc}
+                                </option>
+                              );
+                            })}
+                          </select>
+                        </div>
                       </div>
-                      <label className="col-form-label mt-1 font-weight-bold">
-                        Chọn khung giờ:
-                      </label>
-                      <div className="timetable" />
                       <label className="col-form-label mt-1 font-weight-bold">
                         Khung giờ đã chọn:
                       </label>

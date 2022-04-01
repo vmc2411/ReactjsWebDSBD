@@ -8,9 +8,12 @@ bodyParser = require('body-parser');
 
 const authRouter = require('./routes/auth')
 const postRouter = require('./routes/post')
-const loaisanRouter = require('./routes/loaisan');
+const loaisanRouter = require('./routes/loaisan')
 const sanRouter = require('./routes/san')
-
+const khunggioRouter = require('./routes/khunggio')
+const hoadonRouter = require('./routes/hoadon')
+const phieudatsanRouter = require('./routes/phieudatsan')
+const chitietphieudatsanRouter = require('./routes/chitietphieudatsan')
 
 
 dotenv.config();
@@ -46,6 +49,12 @@ const connectDB = async () => {
   app.use('/api/posts',postRouter)
   app.use('/api/loaiSan',loaisanRouter)
   app.use('/api/sans',sanRouter)
+  app.use('/api/khungGio',khunggioRouter)
+  app.use('/api/hoadon',hoadonRouter)
+  app.use('/api/phieudatsan',phieudatsanRouter)
+  app.use('/api/chitietphieudatsan',chitietphieudatsanRouter)
+
+
 
 app.listen(8800,() =>{
     console.log("Backend server is running!")
