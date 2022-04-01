@@ -19,7 +19,7 @@ const LoginForm = () => {
         window.localStorage.setItem('fullnameadmin', res.data.fullname)
         window.localStorage.setItem('accesstokenadmin', res.data.accessToken)
         alert(result);
-        navigate("/admin");
+        navigate("/admin/*");
       })
       .catch((err) => alert(err.response.data.message));
   };
