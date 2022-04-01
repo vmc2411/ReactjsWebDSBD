@@ -37,7 +37,9 @@ router.route('/add').post(function (req, res) {
 
 //get all phieu dat san
 router.route('/').get(async function (req, res) {
-    chitietphieudatsanModel.find(function (err, chitietphieudatsan) {
+    const idsan = req.query.idSan;
+    const ngayda = req.query.ngayda;
+    chitietphieudatsanModel.find({ San: idsan, NgayDa: ngayda }, function (err, chitietphieudatsan) {
         if (err) {
             console.log(err);
         }

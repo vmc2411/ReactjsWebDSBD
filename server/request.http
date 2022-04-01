@@ -152,10 +152,10 @@ Content-Type: application/json
 { 
     "IDPhieuDatSan": "6245d68793a321f7bd782c82", 
     "IDSan": "623f125c93169afa4e4fe71e", 
-    "NgayDa": "2022-03-31", 
+    "NgayDa": "2022-04-01", 
     "ThanhTien": 5000000, 
-    "IDKhunggio": "62447040be07951b73251bb2"
+    "IDKhunggio": "624472abbe07951b73251bbc"
 }
 
 ###
-GET http://localhost:8800/api/chitietphieudatsan
+GET http://localhost:3000/api/chitietphieudatsan?idSan=623f125c93169afa4e4fe71e&ngayda=2022-04-01

@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import football from "../../assets/images/football.jpeg";
 const ChiTietSan = () => {
-  const [id, setId] = useState(useParams().id);
+  const [idSan, setIdSan] = useState(useParams().id);
   const [san, setSan] = useState({
     _id: "",
     TenSan: "",
@@ -23,28 +23,51 @@ const ChiTietSan = () => {
       hesogia: 0,
     },
   ]);
+  const [khungGioDaDat, setKhungGioDaDat] = useState([]);
+  const [ngayDa, setNgayDa] = useState(new Date().toISOString().split("T")[0]);
+  const [khungGioDaChon, setkhungGioDaChon] = useState([]);
 
-  function getKhunggios() {
+  function handleChange(event) {
+    setNgayDa(event.target.value);
     axios
-      .get(`/api/khunggio`)
+      .get(
+        `/api/chitietphieudatsan?idSan=${idSan}&ngayda=${event.target.value}`
+      )
       .then((res) => {
-        return res.data;
-      })
-      .then((data) => {
-        setKhunggio(data);
+        setKhungGioDaDat(
+          res.data.map((item) => {
+            return item.Khunggio;
+          })
+        );
       });
   }
 
+  function chonKhungGio(event) {
+    let idKhungGio = event.target.value;
+    if (khungGioDaChon.includes(idKhungGio)) {
+      setkhungGioDaChon(khungGioDaChon.filter((item) => item != idKhungGio));
+    } else {
+      setkhungGioDaChon([...khungGioDaChon, idKhungGio]);
+    }
+    console.log(khungGioDaChon);
+  }
+
   useEffect(() => {
+    axios.get(`/api/sans/${idSan}`).then((res) => {
+      setSan(res.data);
+    });
     axios
-      .get(`/api/sans/${id}`)
+      .get(`/api/chitietphieudatsan?idSan=${idSan}&ngayda=${ngayDa}`)
       .then((res) => {
-        return res.data;
-      })
-      .then((data) => {
-        setSan(data);
+        setKhungGioDaDat(
+          res.data.map((item) => {
+            return item.Khunggio;
+          })
+        );
       });
-    getKhunggios();
+    axios.get(`/api/khunggio`).then((res) => {
+      setKhunggio(res.data);
+    });
   }, []);
 
   return (
@@ -84,10 +107,10 @@ const ChiTietSan = () => {
                       </div>
                       <div className="infor_tabcontent">
                         <div className="row novaticDivAuctionProperty">
-                          <div className="col-sm-5 col-xs-6 my-2">
+                          <div className="col-sm-5 col-xs-6 my-2" hidden>
                             <span className="spanauctionproperty">Mã sân:</span>
                           </div>
-                          <div className="col-sm-7 col-xs-6 my-2">
+                          <div className="col-sm-7 col-xs-6 my-2" hidden>
                             <span
                               className="spanColorAuctionproperty"
                               id="idsan"
@@ -147,6 +170,8 @@ const ChiTietSan = () => {
                             id="ngayda"
                             type="date"
                             className="form-control"
+                            defaultValue={ngayDa}
+                            onChange={handleChange}
                           />
                         </div>
                         <div className="col-auto">
@@ -158,28 +183,90 @@ const ChiTietSan = () => {
                           >
                             Tiến hành đặt sân
                           </button>
+                          {khungGioDaChon}
                         </div>
                         <label className="col-form-label mt-1 font-weight-bold">
                           Chọn khung giờ còn trống:
                         </label>
                         <div className="col-auto">
-                          <select className="form-control" name="" id="">
+                          <div
+                            className="btn-group row"
+                            role="group"
+                            aria-label="Basic checkbox toggle button group"
+                          >
                             {khunggio.map((item, index) => {
-                              return (
-                                <option value={item._id} key={index}>
-                                  {item.thoigianbatdau +
-                                    " - " +
-                                    item.thoigianketthuc}
-                                </option>
-                              );
+                              if (!khungGioDaDat.includes(item._id)) {
+                                return (
+                                  <>
+                                    <div
+                                      className="col-md-2"
+                                      style={{ padding: "0px", width: "140px" }}
+                                      key={index}
+                                    >
+                                      <input
+                                        type="checkbox"
+                                        className="btn-check"
+                                        id={item._id}
+                                        autoComplete="off"
+                                        value={item._id}
+                                        onChange={chonKhungGio}
+                                      />
+                                      <label
+                                        className="btn btn-outline-primary"
+                                        htmlFor={item._id}
+                                      >
+                                        {item.thoigianbatdau +
+                                          " - " +
+                                          item.thoigianketthuc}
+                                      </label>
+                                    </div>
+                                  </>
+                                );
+                              } else {
+                                return (
+                                  <>
+                                    <div
+                                      className="col-md-2"
+                                      style={{ padding: "0px", width: "140px" }}
+                                      key={index}
+                                    >
+                                      <input
+                                        type="checkbox"
+                                        className="btn-check"
+                                        id={item._id}
+                                        autoComplete="off"
+                                        value={item._id}
+                                        disabled
+                                      />
+                                      <label
+                                        className="btn btn-outline-danger disable"
+                                        htmlFor={item._id}
+                                      >
+                                        {item.thoigianbatdau +
+                                          " - " +
+                                          item.thoigianketthuc}
+                                      </label>
+                                    </div>
+                                  </>
+                                );
+                              }
                             })}
-                          </select>
+                          </div>
+                          {/* <select className="form-control" name="" id="">
+                            {khunggio.map((item, index) => {
+                              if (!khungGioDaDat.includes(item._id)) {
+                                return (
+                                  <option value={item._id} key={index}>
+                                    {item.thoigianbatdau +
+                                      " - " +
+                                      item.thoigianketthuc}
+                                  </option>
+                                );
+                              }
+                            })}
+                          </select> */}
                         </div>
                       </div>
-                      <label className="col-form-label mt-1 font-weight-bold">
-                        Khung giờ đã chọn:
-                      </label>
-                      <div className="row g-3 align-items-center time-list"></div>
                       <div
                         className="modal fade"
                         id="Modal"
