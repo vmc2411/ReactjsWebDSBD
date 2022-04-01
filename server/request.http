@@ -2,8 +2,10 @@ POST http://localhost:8800/api/auth/register
 Content-Type: application/json
 
 {
-    "username": "truong",
-    "password": "truong"
+    "fullname": "Phan Trần Hoàng Hiệp",
+    "username": "hiep",
+    "password": "hiep3110",
+    "isAdmin": 0
 }
 
 ###
@@ -12,10 +14,18 @@ POST http://localhost:8800/api/auth/login
 Content-Type: application/json
 
 {
-    "username": "kail",
-    "password": "kail2411"
+    "username": "hiep",
+    "password": "hiep3110"
 }
 ###
+
+POST http://localhost:8800/api/auth/admin/login
+Content-Type: application/json
+
+{
+    "username": "hiep",
+    "password": "hiep3110"
+}
 
 POST http://localhost:8800/api/posts
 Content-Type: application/json
@@ -71,7 +81,7 @@ Content-Type: application/json
 GET http://localhost:8800/api/sans
 ###
 
-GET http://localhost:8800/api/sans/623efb931dd9a3762f4030ec
+GET http://localhost:8800/api/sans/623f125c93169afa4e4fe71e
 
 ###
 
@@ -90,6 +100,9 @@ DELETE http://localhost:8800/api/sans/delete/623d62f1ab5b1b9bc43b3839
 
 ###
 GET http://localhost:8800/api/loaisan
+
+###
+GET http://localhost:8800/api/loaisan/623f25bf35fe04520d21bf41
 
 ###
 

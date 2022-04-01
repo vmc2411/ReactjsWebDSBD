@@ -62,26 +62,35 @@ router.route('/delete/:id').delete(function (req, res) {
     });
 });
 
-//get all loaisan
+//get all san
 router.route('/').get(async function (req, res) {
+    const idLoaiSan = req.query.idloaisan;
     try {
-        const san = await sanModel.find().populate('LoaiSan');
-        res.json(san);
+        let san;
+        if (idLoaiSan) {
+            san = await sanModel.find({ LoaiSan: idLoaiSan }).populate('LoaiSan');
+            res.json(san);
+        } else {
+            san = await sanModel.find().populate('LoaiSan');
+            res.json(san);
+        }
     } catch (error) {
         console.log(error)
         res.status(500).json('Internal server error');
     }
 });
 
-//get byid loaisan
+//get by id
 router.route('/:id').get(function (req, res) {
     let id = req.params.id;
-    sanModel.findById(id, function (err, san) {
-        if (err) {
-            res.json(err);
-        }
-        res.json(san);
-    });
+    sanModel.findById(id).populate('LoaiSan').
+        exec()
+        .then(san => {
+            res.json(san)
+        })
+        .catch(err => {
+            res.json(err)
+        });
 });
 
 module.exports = router;

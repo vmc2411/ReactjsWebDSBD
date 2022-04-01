@@ -42,7 +42,6 @@ const connectDB = async () => {
   app.use(cors(corsOptions));
   app.use(bodyParser.json());
 
-
   app.use('/api/auth',authRouter)
   app.use('/api/posts',postRouter)
   app.use('/api/loaiSan',loaisanRouter)
