@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams} from "react-router-dom";
 import football from "../../assets/images/football.jpeg";
 const ChiTietSan = () => {
-  const navigate = useNavigate();
   const [idSan, setIdSan] = useState(useParams().id);
   const [san, setSan] = useState({
     _id: "",
@@ -37,6 +36,12 @@ const ChiTietSan = () => {
 
   function handleChange(event) {
     setNgayDa(event.target.value);
+    let btn_check = document.querySelectorAll(".btn-check");
+    btn_check.forEach((item) => {
+      item.checked = false;
+    });
+    setTongTien(0);
+    setkhungGioDaChon([]);
     axios
       .get(
         `/api/chitietphieudatsan?idSan=${idSan}&ngayda=${event.target.value}`
@@ -47,16 +52,12 @@ const ChiTietSan = () => {
             return item.Khunggio;
           })
         );
-        setkhungGioDaChon([]);
       });
   }
 
   function chonKhungGio(item) {
-    let idKhungGio = item._id;
-    if (khungGioDaChon.includes(idKhungGio)) {
-      setkhungGioDaChon(
-        khungGioDaChon.filter((item) => item._id != idKhungGio)
-      );
+    if (khungGioDaChon.includes(item)) {
+      setkhungGioDaChon(khungGioDaChon.filter((khunggio) => khunggio != item));
       setTongTien((tongtien) => {
         return (tongtien -= san.LoaiSan.gia * item.hesogia);
       });
@@ -281,6 +282,7 @@ const ChiTietSan = () => {
                                       <label
                                         className="btn btn-outline-danger disable"
                                         htmlFor={item._id}
+                                        style={{ color: "red" }}
                                       >
                                         {item.thoigianbatdau +
                                           " - " +
@@ -363,40 +365,36 @@ const ChiTietSan = () => {
                                         Khung giờ đã chọn:
                                       </label>
                                       <div className="row g-3 time-list">
-                                        {khunggio.map((item, index) => {
-                                          if (
-                                            khungGioDaChon.includes(item._id)
-                                          ) {
-                                            return (
-                                              <div
-                                                className="col-md-2"
-                                                style={{
-                                                  padding: "0px",
-                                                  width: "140px",
-                                                }}
-                                                key={index}
+                                        {khungGioDaChon.map((item, index) => {
+                                          return (
+                                            <div
+                                              className="col-md-2"
+                                              style={{
+                                                padding: "0px",
+                                                width: "140px",
+                                              }}
+                                              key={index}
+                                            >
+                                              <input
+                                                type="checkbox"
+                                                className="btn-check"
+                                                id={item._id}
+                                                autoComplete="off"
+                                                value={item._id}
+                                                onChange={() =>
+                                                  chonKhungGio(item)
+                                                }
+                                              />
+                                              <label
+                                                className="btn btn-outline-primary"
+                                                htmlFor={item._id}
                                               >
-                                                <input
-                                                  type="checkbox"
-                                                  className="btn-check"
-                                                  id={item._id}
-                                                  autoComplete="off"
-                                                  value={item._id}
-                                                  onChange={() =>
-                                                    chonKhungGio(item)
-                                                  }
-                                                />
-                                                <label
-                                                  className="btn btn-outline-primary"
-                                                  htmlFor={item._id}
-                                                >
-                                                  {item.thoigianbatdau +
-                                                    " - " +
-                                                    item.thoigianketthuc}
-                                                </label>
-                                              </div>
-                                            );
-                                          }
+                                                {item.thoigianbatdau +
+                                                  " - " +
+                                                  item.thoigianketthuc}
+                                              </label>
+                                            </div>
+                                          );
                                         })}
                                       </div>
                                       <br />
