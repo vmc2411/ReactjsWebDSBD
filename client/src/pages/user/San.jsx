@@ -98,6 +98,7 @@ const San = () => {
                                 <img src={sanbongda} className="img-fluid" />
                               </a>
                               <div className="text">
+                                <h5>Tên sân: {item.TenSan}</h5>
                                 <h5>Số người: {item.LoaiSan.soluongnguoi}</h5>
                                 <div className="price">
                                   <h5>

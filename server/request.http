@@ -168,4 +168,4 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/api/chitietphieudatsan?idSan=623f125c93169afa4e4fe71e&ngayda=2022-04-01
+GET http://localhost:3000/api/chitietphieudatsan?idSan=623f125c93169afa4e4fe71e&ngayda=2022-04-02

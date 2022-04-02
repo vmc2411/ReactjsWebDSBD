@@ -14,8 +14,8 @@ router.route('/add').post(function (req, res) {
         }
     );
     newHoaDon.save()
-        .then(() => {
-            res.status(200).json({ 'message': 'Thêm hóa đơn thành công!' });
+        .then((hoadon) => {
+            res.status(200).json({ 'message': 'Thêm hóa đơn thành công!' , hoadon: hoadon});
         })
         .catch(err => {
             res.status(400).send(err);
