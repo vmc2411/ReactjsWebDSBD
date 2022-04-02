@@ -9,6 +9,7 @@ const LoaiTinTuc = () => {
     axios
       .delete(`/api/Loaitintuc/delete/${row._id}`)
       .then((res) => {
+    console.log(res.data);
         setLoaitintuc(
             LoaiTinTuc.filter((item) => {
             return item._id !== res.data.loaitintuc._id;

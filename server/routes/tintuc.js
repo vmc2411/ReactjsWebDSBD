@@ -6,13 +6,12 @@ let tintucModel = require("../models/Tintuc");
 
 //create
 router.route('/add').post(function (req, res) {
-    const { TieuDe, NoiDung, NgayLap, LoaiTinTuc, User } = req.body;
+    const { TieuDe, NoiDung, LoaiTinTuc, User } = req.body;
 
     let newTinTuc = new tintucModel(
         {
             TieuDe,
             NoiDung,
-            NgayLap,
             LoaiTinTuc, 
             User
         }
@@ -41,7 +40,6 @@ router.route('/update/:id').put(function (req, res) {
         else {
             tintuc.TieuDe = req.body.TieuDe;
             tintuc.NoiDung = req.body.NoiDung;
-            tintuc.NgayLap = req.body.NgayLap;
             tintuc.LoaiTinTuc = req.body.LoaiTinTuc;
             tintuc.User = req.body.User;
 

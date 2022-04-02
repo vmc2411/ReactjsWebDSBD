@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const router = express.Router();
 let loaitintucModel = require("../models/Loaitintuc");
+let tintucModel = require("../models/Tintuc");
 
 //create
 router.route('/add').post(function (req, res) {
@@ -35,9 +36,10 @@ router.route('/update/:id').put(function (req, res) {
 
 //delete
 router.route('/delete/:id').delete(function (req, res) {
+  tintucModel.find({LoaiTinTuc: req.params.id }).remove().exec();
   loaitintucModel.findByIdAndRemove({ _id: req.params.id }, function (err, loaitintuc) {
     if (err) res.json(err);
-    else res.json('Loaitintuc Deleted Successfully');
+    else res.json({message:'Loaitintuc Deleted Successfully', loaitintuc: loaitintuc});
   });
 });
 

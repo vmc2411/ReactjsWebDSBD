@@ -12,6 +12,7 @@ const TintucSchema = new Schema(
         },
         NgayLap: {
             type: Date,
+            default: Date.now
         },
         LoaiTinTuc: {
             type: Schema.Types.ObjectId,

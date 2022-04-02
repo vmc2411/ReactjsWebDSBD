@@ -31,7 +31,7 @@ const Tintuc = () => {
     },
     {
       name: "Nội dung",
-      selector: (row) => row["NoiDung"],
+      selector: (row) => row["NoiDung"].substr(1, 10) + "...",
       sortable: true,
     },
     {
