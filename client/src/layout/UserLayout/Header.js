@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const accestoken = window.localStorage.getItem("accesstoken");
-  const fullname = window.localStorage.getItem("fullname");
+  const [accestoken, setaccestoken] = useState(window.localStorage.getItem("accesstoken"));
+  const [fullname, setFullName] = useState(window.localStorage.getItem("fullname"));
   function logout (){
+    setaccestoken(null)
     localStorage.removeItem('iduser');
     localStorage.removeItem('fullname');
     localStorage.removeItem('accesstoken');

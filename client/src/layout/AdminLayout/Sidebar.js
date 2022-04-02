@@ -4,14 +4,14 @@ import logo from '../../assets/images/logo/footbal_logo.png'
 import avatar from '../../assets/images/user/user_icon.png'
 const Sidebar = () => {
     const fullnameadmin = window.localStorage.getItem("fullnameadmin");
-    function logout (){
+    function logout() {
         localStorage.removeItem('idadmin');
         localStorage.removeItem('fullnameadmin');
         localStorage.removeItem('accesstokenadmin');
-      }
+    }
     return (
         <div className="main-sidebar sidebar-dark-primary elevation-4">
-            <Link to={'/admin'} className="brand-link">
+            <Link to={'/admin/san'} className="brand-link">
                 <img src={logo} alt="Logo" className="brand-image img-circle elevation-3" />
                 <span className="brand-text font-weight-light text-white">DTV FootBall</span>
             </Link>
@@ -21,7 +21,7 @@ const Sidebar = () => {
                         <img src={avatar} className="img-circle elevation-2" alt="User Image" />
                     </div>
                     <div className="info">
-                        <Link to={'/admin'} className="d-block">{fullnameadmin}</Link>
+                        <Link to={'/admin/san'} className="d-block">{fullnameadmin}</Link>
                     </div>
                 </div>
                 <nav className="mt-2">
@@ -56,7 +56,7 @@ const Sidebar = () => {
                             </ul>
                         </li>
                         <li className="nav-item">
-                            <Link to={'/admin'} className="nav-link">
+                            <Link to={'/admin/san'} className="nav-link">
                                 <i className="nav-icon far fa-image" />
                                 <p>
                                     Tài khoản
@@ -64,7 +64,7 @@ const Sidebar = () => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to={'/admin'} className="nav-link">
+                            <Link to={'/admin/san'} className="nav-link">
                                 <i className="nav-icon far fa-image" />
                                 <p>
                                     Loại tin tức
@@ -72,7 +72,7 @@ const Sidebar = () => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to={'/admin'} className="nav-link">
+                            <Link to={'/admin/san'} className="nav-link">
                                 <i className="nav-icon far fa-image" />
                                 <p>
                                     Tin tức
@@ -80,7 +80,7 @@ const Sidebar = () => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to={'/admin'} className="nav-link">
+                            <Link to={'/admin/san'} className="nav-link">
                                 <i className="nav-icon fas fa-columns" />
                                 <p>
                                     Hóa đơn
@@ -88,7 +88,7 @@ const Sidebar = () => {
                             </Link>
                         </li>
                         <li className="nav-item mt-md-auto">
-                            <Link to={'/admin/login'} className="nav-link" onClick={() => logout()}>
+                            <Link to={'/admin'} className="nav-link" onClick={() => logout()}>
                                 <i className="nav-icon fas fa-book" />
                                 <p>
                                     Đăng xuất

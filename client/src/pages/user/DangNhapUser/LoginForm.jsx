@@ -20,8 +20,8 @@ const LoginForm = () => {
         window.localStorage.setItem('iduser', res.data._id)
         window.localStorage.setItem('fullname', res.data.fullname)
         window.localStorage.setItem('accesstoken', res.data.accessToken)
-        alert(result);
         navigate("/");
+        window.location.reload(false);
       })
       .catch((err) => alert(err.response.data.message));
   };
