@@ -16,7 +16,7 @@ const RegisterForm = () => {
       isAdmin: 0,
     };
     axios
-      .post("http://localhost:8800/api/auth/register", request)
+      .post("/api/auth/register", request)
       .then((res) => {
         const result = res.data.message;
         alert(result);

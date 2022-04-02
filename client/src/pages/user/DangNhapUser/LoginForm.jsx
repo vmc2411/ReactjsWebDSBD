@@ -14,7 +14,7 @@ const LoginForm = () => {
       password: document.getElementById("inputPassword").value,
     };
     axios
-      .post("http://localhost:8800/api/auth/login", request)
+      .post("/api/auth/login", request)
       .then((res) => {
         const result = res.data.message;
         window.localStorage.setItem('iduser', res.data._id)

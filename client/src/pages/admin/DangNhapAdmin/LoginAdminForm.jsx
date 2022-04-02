@@ -12,7 +12,7 @@ const LoginForm = () => {
       password: document.getElementById("inputPassword").value,
     };
     axios
-      .post("http://localhost:8800/api/auth/admin/login", request)
+      .post("/api/auth/admin/login", request)
       .then((res) => {
         const result = res.data.message;
         window.localStorage.setItem('idadmin', res.data._id)
