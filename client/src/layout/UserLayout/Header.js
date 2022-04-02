@@ -70,7 +70,7 @@ const Header = () => {
           <div id="navigation" className="collapse navbar-collapse">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item"><Link to={'/'} className="nav-link ">Trang chủ</Link></li>
-              <li className="nav-item"><Link to={'/'} className="nav-link">Giới thiệu</Link></li>
+              <li className="nav-item"><Link to={'/gioithieu'} className="nav-link">Giới thiệu</Link></li>
               <li className="nav-item"><Link to={'/san'} className=" nav-link">Đặt sân</Link></li>
               <li className="nav-item"><Link to={'/'} className="nav-link ">Tin tức</Link></li>
               <li className="nav-item"><Link to={'/'} className="nav-link">Liên hệ</Link></li>

@@ -8,10 +8,10 @@ function Home() {
     <div className="row">
       <div className="col-md-12">
         <div id="main-slider" className="owl-carousel owl-theme">
-          <img src="picture/img/football.jpeg" alt="Example blog post alt" className="img-fluid" />
-          <img src="picture/img/football.jpeg" alt="Example blog post alt" className="img-fluid" />
-          <img src="picture/img/football.jpeg" alt="Example blog post alt" className="img-fluid" />
-          <img src="picture/img/football.jpeg" alt="Example blog post alt" className="img-fluid" />
+          <img src="picture/img/football.jpeg"  className="img-fluid" />
+          <img src="picture/img/football.jpeg"  className="img-fluid" />
+          <img src="picture/img/football.jpeg"  className="img-fluid" />
+          <img src="picture/img/football.jpeg"  className="img-fluid" />
         </div>
       </div>
     </div>
