@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const [accestoken, setaccestoken] = useState(window.localStorage.getItem("accesstoken"));
   const [fullname, setFullName] = useState(window.localStorage.getItem("fullname"));
-  function logout (){
+  function logout() {
     setaccestoken(null)
     localStorage.removeItem('iduser');
     localStorage.removeItem('fullname');
@@ -91,6 +91,11 @@ const Header = () => {
             </ul>
             <div className="navbar-buttons d-flex justify-content-end">
               <div id="search-not-mobile" className="navbar-collapse collapse" />
+              <div id="basket-overview" className="navbar-collapse collapse d-none d-lg-block">
+                <Link to="/phieudatsan" className="btn btn-primary navbar-btn">
+                  <span>Sân đã đặt</span>
+                </Link>
+              </div>
               <Link data-toggle="collapse" to={'/'} className="btn navbar-btn btn-primary d-none d-lg-inline-block">
                 <span className="sr-only">Toggle search</span>
                 <i className="fa fa-search" />
@@ -118,7 +123,7 @@ const Header = () => {
           </form>
         </div>
       </div>
-    </header>
+    </header >
   );
 };
 
