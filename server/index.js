@@ -3,7 +3,7 @@ const mongoose = require('mongoose') ;
 const dotenv = require('dotenv') ;
 const cors = require('cors') ;
 const app = express();
-bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 
 
 const authRouter = require('./routes/auth')
@@ -13,6 +13,9 @@ const tintucRouter = require('./routes/tintuc')
 const loaisanRouter = require('./routes/loaisan')
 const sanRouter = require('./routes/san')
 const khunggioRouter = require('./routes/khunggio')
+const hoadonRouter = require('./routes/hoadon')
+const phieudatsanRouter = require('./routes/phieudatsan')
+const chitietphieudatsanRouter = require('./routes/chitietphieudatsan')
 
 
 dotenv.config();
@@ -44,7 +47,6 @@ const connectDB = async () => {
   app.use(cors(corsOptions));
   app.use(bodyParser.json());
 
-
   app.use('/api/auth',authRouter)
   app.use('/api/posts',postRouter)
   app.use('/api/loaitintuc', loaitintucRouter )
@@ -52,6 +54,9 @@ const connectDB = async () => {
   app.use('/api/loaiSan',loaisanRouter)
   app.use('/api/sans',sanRouter)
   app.use('/api/khungGio',khunggioRouter)
+  app.use('/api/hoadon',hoadonRouter)
+  app.use('/api/phieudatsan',phieudatsanRouter)
+  app.use('/api/chitietphieudatsan',chitietphieudatsanRouter)
 
 
 
