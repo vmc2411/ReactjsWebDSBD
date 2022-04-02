@@ -15,12 +15,7 @@ const Header = () => {
         <div class="container">
           <div class="row">
             <div class="col-lg-6 offer mb-3 mb-lg-0">
-              <a href="#" class="btn btn-success btn-sm">
-                Offer of the day
-              </a>
-              <a href="#" class="ml-1">
-                Get flat 35% off on orders over $50!
-              </a>
+              
             </div>
             <div class="col-lg-6 text-center text-lg-right">
               {(() => {
@@ -56,8 +51,8 @@ const Header = () => {
       <nav className="navbar navbar-expand-lg">
         <div className="container">
           <Link to={'/'} className="navbar-brand home">
-            <img src="" className="d-none d-md-inline-block" />
-            <img src="/img/logo-small.png" alt="Obaju logo" className="d-inline-block d-md-none" />
+            <img src="picture/img/LogoDTHCV.svg" className="d-none d-md-inline-block" />
+            <img src="picture/img/LogoDTHCV.svg" alt="Obaju logo" className="d-inline-block d-md-none" />
             <span className="sr-only">Obaju - go to homepage</span>
           </Link>
           <div className="navbar-buttons">
@@ -70,15 +65,7 @@ const Header = () => {
               <span className="sr-only">Toggle navigation</span>
               <i className="fa fa-align-justify" />
             </button>
-            <button
-              type="button"
-              data-toggle="collapse"
-              data-target="#search"
-              className="btn btn-outline-secondary navbar-toggler"
-            >
-              <span className="sr-only">Toggle search</span>
-              <i className="fa fa-search" />
-            </button>
+           
           </div>
           <div id="navigation" className="collapse navbar-collapse">
             <ul className="navbar-nav mr-auto">
@@ -90,11 +77,8 @@ const Header = () => {
             </ul>
             <div className="navbar-buttons d-flex justify-content-end">
               <div id="search-not-mobile" className="navbar-collapse collapse" />
-              <Link data-toggle="collapse" to={'/'} className="btn navbar-btn btn-primary d-none d-lg-inline-block">
-                <span className="sr-only">Toggle search</span>
-                <i className="fa fa-search" />
-              </Link>
-
+              
+              <div id="clockDisplay"></div>
             </div>
           </div>
         </div>
