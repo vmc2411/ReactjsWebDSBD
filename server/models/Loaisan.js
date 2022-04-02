@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema
 const LoaisanSchema = new mongoose.Schema(
   {
     tenloaisan: {
@@ -10,7 +11,7 @@ const LoaisanSchema = new mongoose.Schema(
     },
     gia: {
       type: Number,
-    },
+    }
   },
 
 );

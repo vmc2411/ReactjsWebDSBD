@@ -1,9 +1,7 @@
 const express = require('express');
 
-const app = express();
 const router = express.Router();
 let khunggioModel = require("../models/Khunggio");
-
 //create
 router.route('/add').post(function (req, res) {
   let khunggio = new khunggioModel(req.body);
@@ -18,15 +16,15 @@ router.route('/add').post(function (req, res) {
 
 //update
 router.route('/update/:id').put(function (req, res) {
-    khunggioModel.findById(req.params.id, function (err, khunggio) {
+  khunggioModel.findById(req.params.id, function (err, khunggio) {
     if (!khunggio)
       return next(new Error('Không tìm thấy id khung giờ'));
     else {
-        khunggio.thoigianbatdau = req.body.thoigianbatdau;
-        khunggio.thoigianketthuc = req.body.thoigianketthuc;
-        khunggio.hesogia = req.body.hesogia;
+      khunggio.thoigianbatdau = req.body.thoigianbatdau;
+      khunggio.thoigianketthuc = req.body.thoigianketthuc;
+      khunggio.hesogia = req.body.hesogia;
 
-        khunggio.save().then(emp => {
+      khunggio.save().then(emp => {
         res.json('Khung giờ update thành công!');
       })
         .catch(err => {
@@ -38,7 +36,7 @@ router.route('/update/:id').put(function (req, res) {
 
 //delete
 router.route('/delete/:id').delete(function (req, res) {
-    khunggioModel.findByIdAndRemove({ _id: req.params.id }, function (err, deletedkhunggio) {
+  khunggioModel.findByIdAndRemove({ _id: req.params.id }, function (err, deletedkhunggio) {
     if (err) res.json(err);
     else res.json({
       message: 'Xóa thành công!',
@@ -48,9 +46,9 @@ router.route('/delete/:id').delete(function (req, res) {
 });
 
 
-//get all loaisan
+//get all khung gio
 router.route('/').get(function (req, res) {
-    khunggioModel.find(function (err, khunggio) {
+  khunggioModel.find(null, null, {sort: { thoigianbatdau : 'asc' }}, function (err, khunggio) {
     if (err) {
       console.log(err);
     }
@@ -60,7 +58,7 @@ router.route('/').get(function (req, res) {
   });
 });
 
-//get byid loaisan
+//get byid khung gio
 router.route('/:id').get(function (req, res) {
   let id = req.params.id;
   khunggioModel.findById(id, function (err, khunggio) {
