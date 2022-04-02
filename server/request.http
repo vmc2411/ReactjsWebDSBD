@@ -2,8 +2,10 @@ POST http://localhost:8800/api/auth/register
 Content-Type: application/json
 
 {
-    "username": "truong",
-    "password": "truong"
+    "fullname": "Phan Trần Hoàng Hiệp",
+    "username": "hiep",
+    "password": "hiep3110",
+    "isAdmin": 0
 }
 
 ###
@@ -12,10 +14,18 @@ POST http://localhost:8800/api/auth/login
 Content-Type: application/json
 
 {
-    "username": "kail",
-    "password": "kail2411"
+    "username": "hiep",
+    "password": "hiep3110"
 }
 ###
+
+POST http://localhost:8800/api/auth/admin/login
+Content-Type: application/json
+
+{
+    "username": "hiep",
+    "password": "hiep3110"
+}
 
 POST http://localhost:8800/api/posts
 Content-Type: application/json

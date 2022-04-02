@@ -3,7 +3,7 @@ const mongoose = require('mongoose') ;
 const dotenv = require('dotenv') ;
 const cors = require('cors') ;
 const app = express();
-bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 
 
 const authRouter = require('./routes/auth')
@@ -44,7 +44,6 @@ const connectDB = async () => {
   app.use(express.json());
   app.use(cors(corsOptions));
   app.use(bodyParser.json());
-
 
   app.use('/api/auth',authRouter)
   app.use('/api/posts',postRouter)
