@@ -27,7 +27,6 @@ const RegisterForm = () => {
 
   return (
     <>
-      <Header />
       <div className="container">
         <div class="row py-5 mt-4 align-items-center">
           <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
@@ -58,7 +57,6 @@ const RegisterForm = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   )
 }
