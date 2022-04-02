@@ -2,6 +2,12 @@ const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema(
     {
+        fullname:{
+            type: String,
+            min: 3,
+            max: 30,
+            require: true,
+        },
         username: {
             type: String,
             require: true,
@@ -13,7 +19,11 @@ const UserSchema = new mongoose.Schema(
             type: String,
             required: true,
             min: 6,
-        },      
+        }, 
+        isAdmin:{
+           type: Boolean,
+           require:true, 
+        },     
     },
     { timestamps: true }
 );
