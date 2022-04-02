@@ -11,7 +11,6 @@ function Home() {
           <img src="picture/img/football.jpeg"  className="img-fluid" />
           <img src="picture/img/football.jpeg"  className="img-fluid" />
           <img src="picture/img/football.jpeg"  className="img-fluid" />
-          <img src="picture/img/football.jpeg"  className="img-fluid" />
         </div>
       </div>
     </div>

@@ -18,7 +18,7 @@ const Footer = () => {
           <div className="row">
             <div className="col-lg-3 col-md-6">
               <h4 className="mb-3 text-light">Thông tin liên hệ</h4>
-              <p className="text-light"><strong>Địa chỉ: 32 hai bà trưng, Phường 12,
+              <p className="text-light"><strong>Địa chỉ: 32 Hai Bà Trưng, Phường 12,
                 Quận 10, TPHCM</strong><br />Email: contact@footballdthcv.com<br />Thời gian làm việc:
                 8:00-21:00<br /></p>
             </div>

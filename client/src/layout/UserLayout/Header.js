@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const accestoken = window.localStorage.getItem("accesstoken");
   const fullname = window.localStorage.getItem("fullname");
-  function logout (){
+  function logout() {
     localStorage.removeItem('iduser');
     localStorage.removeItem('fullname');
     localStorage.removeItem('accesstoken');
@@ -15,7 +15,7 @@ const Header = () => {
         <div class="container">
           <div class="row">
             <div class="col-lg-6 offer mb-3 mb-lg-0">
-              
+
             </div>
             <div class="col-lg-6 text-center text-lg-right">
               {(() => {
@@ -37,9 +37,7 @@ const Header = () => {
                       <li class="list-inline-item">
                         <Link to="/register">Đăng ký</Link>
                       </li>
-                      <li class="list-inline-item">
-                        <a href="contact.html">Liên hệ</a>
-                      </li>
+
                     </ul>
                   );
                 }
@@ -65,20 +63,19 @@ const Header = () => {
               <span className="sr-only">Toggle navigation</span>
               <i className="fa fa-align-justify" />
             </button>
-           
+
           </div>
           <div id="navigation" className="collapse navbar-collapse">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item"><Link to={'/'} className="nav-link ">Trang chủ</Link></li>
               <li className="nav-item"><Link to={'/gioithieu'} className="nav-link">Giới thiệu</Link></li>
               <li className="nav-item"><Link to={'/san'} className=" nav-link">Đặt sân</Link></li>
-              <li className="nav-item"><Link to={'/'} className="nav-link ">Tin tức</Link></li>
-              <li className="nav-item"><Link to={'/'} className="nav-link">Liên hệ</Link></li>
+              <li className="nav-item"><Link to={'/tintuc'} className="nav-link ">Tin tức</Link></li>
+              <li className="nav-item"><Link to={'/lienhe'} className="nav-link">Liên hệ</Link></li>
             </ul>
             <div className="navbar-buttons d-flex justify-content-end">
               <div id="search-not-mobile" className="navbar-collapse collapse" />
-              
-              <div id="clockDisplay"></div>
+
             </div>
           </div>
         </div>
@@ -95,6 +92,8 @@ const Header = () => {
               <div className="input-group-append">
                 <button type="button" className="btn btn-primary">
                   <i className="fa fa-search" />
+                  <div id="clockDisplay"></div>
+
                 </button>
               </div>
             </div>
