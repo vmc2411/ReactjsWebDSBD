@@ -58,7 +58,7 @@ const Sidebar = () => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to={'/admin'} className="nav-link">
+                        <Link to={'/admin/loaitintuc'} className="nav-link">
                                 <i className="nav-icon far fa-image" />
                                 <p>
                                     Loại tin tức
@@ -66,7 +66,7 @@ const Sidebar = () => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to={'/admin'} className="nav-link">
+                            <Link to={'/admin/tintuc'} className="nav-link">
                                 <i className="nav-icon far fa-image" />
                                 <p>
                                     Tin tức

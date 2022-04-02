@@ -28,9 +28,7 @@ Authorization: Kail eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWR
     "img": "react2"
 }
 
-###
 
-GET http://localhost:8800/api/posts
 
 ###
 
@@ -113,3 +111,20 @@ Content-Type: application/json
     "soluongnguoi": 10,
     "gia": 500000
 }
+###
+
+POST http://localhost:8800/api/tintuc/add
+Content-Type: application/json
+Authorization: Kail eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWRkZGQ1MDIwMjY1YzY1Y2ZmYTAiLCJpYXQiOjE2NDc0NDU2NzB9.r_hoK-m8TVXX5GbfecchPehc_vyEUggeyQ0kY3NwS3c
+
+{
+    "TieuDe": "React2",
+    "NoiDung": "React2",
+    "NgayLap": "04/01/2022",
+    "LoaiTinTuc": "6246a64d617977a94133b0de",
+    "User": "6231edddd5020265c65cffa0"
+}
+
+###
+DELETE http://localhost:8800/api/tintuc/delete/6247c55a9cd8e25489b206cc
+Authorization: Kail eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWRkZGQ1MDIwMjY1YzY1Y2ZmYTAiLCJpYXQiOjE2NDc0NDY0NTd9.WdQVAxYyJeJDbzmW5zuV4tQibNJ9e0ZkjmgLRhFdJi8

@@ -69,7 +69,7 @@ router.route('/delete/:id').delete(function (req, res) {
 //get all loaitintuc
 router.route('/').get(async function (req, res) {
     try {
-        const tintuc = await tintucModel.find().populate('Loaitintuc');
+        const tintuc = await tintucModel.find().populate('LoaiTinTuc').populate('User');
         res.json(tintuc);
     } catch (error) {
         console.log(error)
