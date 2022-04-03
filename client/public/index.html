@@ -12,8 +12,8 @@
   <link href="%PUBLIC_URL%/assets/css/style.css" rel="stylesheet" />
   <link href="%PUBLIC_URL%/assets/css/custom.css" rel="stylesheet" />
   <link href="%PUBLIC_URL%/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" 
-  integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
   <script src="%PUBLIC_URL%/assets/vendor/jquery/jquery.min.js" type="text/javascript"></script>
   <!-- Tweaks for older IEs-->
   <!--[if lt IE 9]>
@@ -31,7 +31,25 @@
   <link href="%PUBLIC_URL%/admin_template/css/custom.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" />
   <link href="%PUBLIC_URL%/user_template/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet" />
-
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css"
+    rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link href="/picture/css/style.css" rel="stylesheet" />
+  <link href="/picture/css/custom.css" rel="stylesheet" />
+  <link href="/picture/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/picture/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+  <link href="/picture/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link href="/picture/vendor/time-table/timetablejs.css" rel="stylesheet" />
+  <link href="/picture/vendor/time-table/custom.css" rel="stylesheet" />
+  <script src="/picture/vendor/time-table/timetable.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+  <script src="/picture/vendor/jquery/jquery.min.js" type="text/javascript"></script>
+  <link href="/admin_template/plugins/data-table/jquery.dataTables.min.css" rel="stylesheet" />
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -54,6 +72,47 @@
   <script src="%PUBLIC_URL%/admin_template/dist/js/adminlte.js" type="text/javascript"></script>
   <script src="%PUBLIC_URL%/admin_template/plugins/time-picker/timepicker.min.js" type="text/javascript"></script>
   <script src="%PUBLIC_URL%/admin_template/js/main.js" type="text/javascript"></script>
+  <script src="/picture/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="/picture/js/jquery.twbsPagination.min.js" type="text/javascript"></script>
+  <script src="/picture/vendor/bootstrap/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+  <script src="/picture/vendor/jquery.cookie/jquery.cookie.js" type="text/javascript"></script>
+  <script src="/picture/vendor/owl.carousel/owl.carousel.min.js"type="text/javascript"></script>
+  <script src="/picture/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js" type="text/javascript"></script>
+  <script src="/picture/js/front.js" type="text/javascript"></script>
+  <script src="/picture/js/time.js" type="text/javascript"></script>
+  <script src="picture/admin_template/plugins/data-table/jquery.dataTables.min.js" type="text/javascript"></script>
+  <script src="https://maps.googleapis.com/maps/api/js"></script>
+<script>
+    // This example displays a marker at the center of Australia.
+    // When the user clicks the marker, an info window opens.10.85524289259457, 106.78536226833974
+    function initMap() {
+        const uluru = {lat: 10.85524289259457, lng: 106.78536226833974};
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 12,
+            center: uluru,
+        });
+        const contentString = 'Đại Học Hutech Khu E, Phường Tân Phú, Quận 9, Thành phố Hồ Chí Minh, Vietnam&amp;daddr=Đại Học Hutech Khu E, Phường Tân Phú, Quận 9, Thành phố Hồ Chí Minh, Vietnam&amp;t=&amp;z=20&amp;ie=UTF8&amp;iwloc=B&amp;output=embed';
+
+        const infowindow = new google.maps.InfoWindow({
+            content: contentString,
+        });
+        const marker = new google.maps.Marker({
+            position: uluru,
+            map,
+            title: "Địa chỉ",
+        });
+        marker.addListener("click", () => {
+            infowindow.open({
+                anchor: marker,
+                map,
+                shouldFocus: false,
+            });
+        }
+        );
+    }
+    google.maps.event.addDomListener(window, 'load', initMap);
+</script>
+
 </body>
 
 </html>
