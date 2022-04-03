@@ -73,7 +73,9 @@ const ChiTietSan = () => {
     if (tongTien === 0) {
       alert("Bạn chưa chọn khung giờ");
     }
-    const newHoaDon = await axios.post("/api/hoadon/add", tongTien);
+    const newHoaDon = await axios.post("/api/hoadon/add", {
+      TongTien: tongTien
+    });
     const newPhieuDatSan = await axios.post("/api/phieudatsan/add", {
       TongTien: tongTien,
       IDHoaDon: newHoaDon.data.hoadon._id,

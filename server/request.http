@@ -138,6 +138,10 @@ GET http://localhost:8800/api/hoadon
 
 ###
 
+DELETE  http://localhost:8800/api/hoadon/delete/6249abcab762aac77dad904b
+
+###
+
 POST http://localhost:8800/api/phieudatsan/add
 Content-Type: application/json
 
@@ -150,6 +154,7 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:8800/api/phieudatsan/delete/6245d012707f932ec247c390
+
 
 ###
 GET http://localhost:8800/api/phieudatsan
