@@ -10,6 +10,9 @@ import RegisterForm from "../../pages/user/DangNhapUser/RegisterForm";
 import PhieuDatSan from "../../pages/user/PhieuDatSan";
 import TinTuc from "../../pages/user/Tapchi/TapChi";
 import ChiTietTinTuc from "../../pages/user/Tapchi/ChiTietTapChi";
+import GioiThieu from "../../pages/user/GioiThieu";
+import LienHe from "../../pages/user/LienHe";
+
 
 const UserLayout = () => {
   return (
@@ -20,6 +23,8 @@ const UserLayout = () => {
           <div >
             <Routes>
               <Route path='/' element={<Home />}></Route>
+              <Route path='/gioithieu' element={<GioiThieu />}></Route>
+              <Route path='/lienhe' element={<LienHe />}></Route>
               <Route path='san' element={<San />}></Route>
               <Route path='san/:id' element={<ChiTietSan />}></Route>
               <Route path="login" element={<LoginForm />}></Route>
