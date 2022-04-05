@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { ReactComponent as Logo } from "../../assets/images/logo/LogoDTHCV.svg";
 const Header = () => {
   const [accestoken, setaccestoken] = useState(window.localStorage.getItem("accesstoken"));
   const [fullname, setFullName] = useState(window.localStorage.getItem("fullname"));
@@ -16,12 +16,7 @@ const Header = () => {
         <div class="container">
           <div class="row">
             <div class="col-lg-6 offer mb-3 mb-lg-0">
-              <a href="#" class="btn btn-success btn-sm">
-                Offer of the day
-              </a>
-              <a href="#" class="ml-1">
-                Get flat 35% off on orders over $50!
-              </a>
+             
             </div>
             <div class="col-lg-6 text-center text-lg-right">
               {(() => {
@@ -56,8 +51,8 @@ const Header = () => {
       </div>
       <nav className="navbar navbar-expand-lg">
         <div className="container">
-          <Link to={'/'} className="navbar-brand home">
-            <img src="" className="d-none d-md-inline-block" />
+          <Link to={'/'} className="navbar-brand home px-4">
+          <Logo />
             <img src="/img/logo-small.png" alt="Obaju logo" className="d-inline-block d-md-none" />
             <span className="sr-only">Obaju - go to homepage</span>
           </Link>
@@ -82,11 +77,11 @@ const Header = () => {
             </button>
           </div>
           <div id="navigation" className="collapse navbar-collapse">
-            <ul className="navbar-nav mr-auto">
+            <ul className="navbar-nav mr-auto px-5">
               <li className="nav-item"><Link to={'/'} className="nav-link ">Trang chủ</Link></li>
               <li className="nav-item"><Link to={'/'} className="nav-link">Giới thiệu</Link></li>
               <li className="nav-item"><Link to={'/san'} className=" nav-link">Đặt sân</Link></li>
-              <li className="nav-item"><Link to={'/'} className="nav-link ">Tin tức</Link></li>
+              <li className="nav-item"><Link to={'/tintuc'} className="nav-link ">Tin tức</Link></li>
               <li className="nav-item"><Link to={'/'} className="nav-link">Liên hệ</Link></li>
             </ul>
             <div className="navbar-buttons d-flex justify-content-end">

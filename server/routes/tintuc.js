@@ -64,11 +64,19 @@ router.route('/delete/:id').delete(function (req, res) {
     });
 });
 
-//get all loaitintuc
+//get all tintuc
 router.route('/').get(async function (req, res) {
+    const idLoaiTinTuc = req.query.idloaitintuc;
     try {
-        const tintuc = await tintucModel.find().populate('LoaiTinTuc').populate('User');
-        res.json(tintuc);
+        let tintuc; 
+        if (idLoaiTinTuc) {
+             tintuc = await tintucModel.find({LoaiTinTuc: idLoaiTinTuc}).populate('LoaiTinTuc').populate('User');
+            res.json(tintuc);
+        } else {
+             tintuc = await tintucModel.find().populate('LoaiTinTuc').populate('User');
+            res.json(tintuc);
+        }
+      
     } catch (error) {
         console.log(error)
         res.status(500).json('Internal server error');

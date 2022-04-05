@@ -200,24 +200,10 @@ function Home() {
                   <del />$143.00
                 </p>
               </div>
-              {/* /.text*/}
-              <div className="ribbon sale">
-                {/* <div class="theribbon">SALE</div>
-                              <div class="ribbon-background"></div> */}
-              </div>
-              {/* /.ribbon*/}
-              <div className="ribbon new">
-                {/* <div class="theribbon">NEW</div>
-                              <div class="ribbon-background"></div> */}
-              </div>
-              {/* /.ribbon*/}
-              <div className="ribbon gift">
-                {/* <div class="theribbon">GIFT</div> */}
-                {/* <div class="ribbon-background"></div> */}
-              </div>
-              {/* /.ribbon*/}
+            
+          
             </div>
-            {/* /.product*/}
+       
           </div>
           <div className="item">
             <div className="product">
@@ -234,16 +220,6 @@ function Home() {
                 <p className="price">
                   <del>$280</del>$143.00
                 </p>
-              </div>
-              <div className="ribbon sale">
-                {/* <div class="theribbon">SALE</div>
-                              <div class="ribbon-background"></div> */}
-              </div>
-              <div className="ribbon new">
-               
-              </div>
-              <div className="ribbon gift">
-               
               </div>
             </div>
           </div>
@@ -320,10 +296,6 @@ function Home() {
                   <del />$143.00
                 </p>
               </div>
-              <div className="ribbon gift">
-                <div className="theribbon">GIFT</div>
-                <div className="ribbon-background" />
-              </div>
             </div>
           </div>
           <div className="item">
@@ -341,18 +313,6 @@ function Home() {
                 <p className="price">
                   <del>$280</del>$143.00
                 </p>
-              </div>
-              <div className="ribbon sale">
-                <div className="theribbon">SALE</div>
-                <div className="ribbon-background" />
-              </div>
-              <div className="ribbon new">
-                <div className="theribbon">NEW</div>
-                <div className="ribbon-background" />
-              </div>
-              <div className="ribbon gift">
-                <div className="theribbon">GIFT</div>
-                <div className="ribbon-background" />
               </div>
             </div>
           </div>
