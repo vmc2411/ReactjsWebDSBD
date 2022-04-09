@@ -138,6 +138,10 @@ GET http://localhost:8800/api/hoadon
 
 ###
 
+DELETE  http://localhost:8800/api/hoadon/delete/6249abcab762aac77dad904b
+
+###
+
 POST http://localhost:8800/api/phieudatsan/add
 Content-Type: application/json
 
@@ -150,6 +154,7 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:8800/api/phieudatsan/delete/6245d012707f932ec247c390
+
 
 ###
 GET http://localhost:8800/api/phieudatsan
@@ -168,4 +173,4 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/api/chitietphieudatsan?idSan=623f125c93169afa4e4fe71e&ngayda=2022-04-01
+GET http://localhost:3000/api/chitietphieudatsan?idSan=623f125c93169afa4e4fe71e&ngayda=2022-04-02

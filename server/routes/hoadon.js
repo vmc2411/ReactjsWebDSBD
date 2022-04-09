@@ -3,19 +3,19 @@ const express = require('express');
 const app = express();
 const router = express.Router();
 let hoaDonModel = require("../models/HoaDon");
-
+let phieudatsanModel = require("../models/PhieuDatSan");
+let chitietphieudatsanModel = require("../models/ChiTietPhieuDatSan");
 //create
 router.route('/add').post(function (req, res) {
     const { TongTien } = req.body;
-
     let newHoaDon = new hoaDonModel(
         {
             TongTien
         }
     );
     newHoaDon.save()
-        .then(() => {
-            res.status(200).json({ 'message': 'Thêm hóa đơn thành công!' });
+        .then((hoadon) => {
+            res.status(200).json({ 'message': 'Thêm hóa đơn thành công!', hoadon: hoadon });
         })
         .catch(err => {
             res.status(400).send(err);
@@ -41,16 +41,23 @@ router.route('/update/:id').put(function (req, res) {
     });
 });
 
-// //delete
-// router.route('/delete/:id').delete(function (req, res) {
-//     sanModel.findByIdAndRemove({ _id: req.params.id }, function (err, deletedSan) {
-//         if (err) res.json(err);
-//         else res.json({
-//             message: 'Delete success!',
-//             san: deletedSan
-//         });
-//     });
-// });
+//delete
+router.route('/delete/:id').delete(async function (req, res) {
+    const idHoadon = await hoaDonModel.findById(req.params.id).then(data => data._id);
+    const idPhieuDatSan = await phieudatsanModel.find({ HoaDon: idHoadon }).then(data => data[0]._id);
+    await chitietphieudatsanModel.deleteMany({ PhieuDatSan: idPhieuDatSan })
+    await phieudatsanModel.findByIdAndRemove(idPhieuDatSan)
+    await hoaDonModel.findByIdAndRemove(idHoadon).then(hoadon => {
+        res.json({
+            message: 'Delete success!',
+            hoadon: hoadon
+        });
+    }).catch(err => {
+        res.json({
+            message: err
+        });
+    })
+});
 
 //get all hoa don
 router.route('/').get(async function (req, res) {

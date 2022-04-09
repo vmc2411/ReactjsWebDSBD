@@ -25,15 +25,15 @@ router.route('/add').post(function (req, res) {
 });
 
 //delete
-// router.route('/delete/:id').delete(function (req, res) {
-//     chitietphieudatsanModel.findByIdAndRemove({ _id: req.params.id }, function (err, deletedPhieu) {
-//         if (err) res.json(err);
-//         else res.json({
-//             message: 'Delete success!',
-//             san: deletedPhieu
-//         });
-//     });
-// });
+router.route('/delete/:id').delete(function (req, res) {
+    chitietphieudatsanModel.findByIdAndRemove({ _id: req.params.id }, function (err, deletedPhieu) {
+        if (err) res.json(err);
+        else res.json({
+            message: 'Delete success!',
+            san: deletedPhieu
+        });
+    });
+});
 
 //get all phieu dat san
 router.route('/').get(async function (req, res) {

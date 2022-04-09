@@ -16,6 +16,7 @@ import ListKhungGio from '../../pages/admin/Khunggio/ListKhungGio';
 import AddKhungGio from '../../pages/admin/Khunggio/AddKhungGio';
 import EditKhungGio from '../../pages/admin/Khunggio/EditKhungGio';
 
+import HoaDon from '../../pages/admin/HoaDon/HoaDon'
 
 const Dashboard = () => {
     return (
@@ -37,6 +38,8 @@ const Dashboard = () => {
                             <Route path='khunggio' element={<ListKhungGio/>}></Route>
                             <Route path='khunggio/add' element={<AddKhungGio/>}></Route>
                             <Route path='khunggio/edit/:id' element={<EditKhungGio/>}></Route>
+
+                            <Route path='hoadon' element={<HoaDon/>}></Route>
                         </Routes>
                     </div>
                 </section>

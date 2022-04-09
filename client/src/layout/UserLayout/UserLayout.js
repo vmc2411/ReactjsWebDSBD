@@ -7,6 +7,9 @@ import ChiTietSan from '../../pages/user/ChiTietSan';
 import Home from "../../pages/user/Home";
 import LoginForm from "../../pages/user/DangNhapUser/LoginForm";
 import RegisterForm from "../../pages/user/DangNhapUser/RegisterForm";
+import PhieuDatSan from "../../pages/user/PhieuDatSan";
+import GioiThieu from "../../pages/user/GioiThieu";
+import LienHe from "../../pages/user/LienHe";
 
 
 const UserLayout = () => {
@@ -18,10 +21,13 @@ const UserLayout = () => {
           <div >
             <Routes>
               <Route path='/' element={<Home />}></Route>
+              <Route path='/gioithieu' element={<GioiThieu />}></Route>
+              <Route path='/lienhe' element={<LienHe />}></Route>
               <Route path='san' element={<San />}></Route>
               <Route path='san/:id' element={<ChiTietSan />}></Route>
               <Route path="login" element={<LoginForm />}></Route>
               <Route path="register" element={<RegisterForm />}></Route>
+              <Route path="phieudatsan" element={<PhieuDatSan />}></Route>
             </Routes>
           </div>
         </section>

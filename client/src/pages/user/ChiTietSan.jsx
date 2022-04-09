@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams} from "react-router-dom";
 import football from "../../assets/images/football.jpeg";
 const ChiTietSan = () => {
   const [idSan, setIdSan] = useState(useParams().id);
@@ -26,9 +26,22 @@ const ChiTietSan = () => {
   const [khungGioDaDat, setKhungGioDaDat] = useState([]);
   const [ngayDa, setNgayDa] = useState(new Date().toISOString().split("T")[0]);
   const [khungGioDaChon, setkhungGioDaChon] = useState([]);
+  const [tongTien, setTongTien] = useState(0);
+  const [idUser, setIdUser] = useState(
+    window.localStorage.getItem("iduser") || null
+  );
+  const [userName, setUserName] = useState(
+    window.localStorage.getItem("fullname") || null
+  );
 
   function handleChange(event) {
     setNgayDa(event.target.value);
+    let btn_check = document.querySelectorAll(".btn-check");
+    btn_check.forEach((item) => {
+      item.checked = false;
+    });
+    setTongTien(0);
+    setkhungGioDaChon([]);
     axios
       .get(
         `/api/chitietphieudatsan?idSan=${idSan}&ngayda=${event.target.value}`
@@ -42,16 +55,47 @@ const ChiTietSan = () => {
       });
   }
 
-  function chonKhungGio(event) {
-    let idKhungGio = event.target.value;
-    if (khungGioDaChon.includes(idKhungGio)) {
-      setkhungGioDaChon(khungGioDaChon.filter((item) => item != idKhungGio));
+  function chonKhungGio(item) {
+    if (khungGioDaChon.includes(item)) {
+      setkhungGioDaChon(khungGioDaChon.filter((khunggio) => khunggio != item));
+      setTongTien((tongtien) => {
+        return (tongtien -= san.LoaiSan.gia * item.hesogia);
+      });
     } else {
-      setkhungGioDaChon([...khungGioDaChon, idKhungGio]);
+      setkhungGioDaChon([...khungGioDaChon, item]);
+      setTongTien((tongtien) => {
+        return (tongtien += san.LoaiSan.gia * item.hesogia);
+      });
     }
-    console.log(khungGioDaChon);
   }
 
+  async function xacNhanDatSan() {
+    if (tongTien === 0) {
+      alert("Bạn chưa chọn khung giờ");
+    }
+    const newHoaDon = await axios.post("/api/hoadon/add", {
+      TongTien: tongTien
+    });
+    const newPhieuDatSan = await axios.post("/api/phieudatsan/add", {
+      TongTien: tongTien,
+      IDHoaDon: newHoaDon.data.hoadon._id,
+      userID: idUser,
+    });
+    khungGioDaChon.forEach((item) => {
+      let thanhtien = san.LoaiSan.gia * item.hesogia;
+      axios
+        .post("/api/chitietphieudatsan/add", {
+          IDPhieuDatSan: newPhieuDatSan.data.phieudatsan._id,
+          IDSan: san._id,
+          NgayDa: ngayDa,
+          ThanhTien: thanhtien,
+          IDKhunggio: item._id,
+        })
+        .then((res) => {
+          window.location.reload(false);
+        });
+    });
+  }
   useEffect(() => {
     axios.get(`/api/sans/${idSan}`).then((res) => {
       setSan(res.data);
@@ -183,7 +227,6 @@ const ChiTietSan = () => {
                           >
                             Tiến hành đặt sân
                           </button>
-                          {khungGioDaChon}
                         </div>
                         <label className="col-form-label mt-1 font-weight-bold">
                           Chọn khung giờ còn trống:
@@ -209,7 +252,7 @@ const ChiTietSan = () => {
                                         id={item._id}
                                         autoComplete="off"
                                         value={item._id}
-                                        onChange={chonKhungGio}
+                                        onChange={() => chonKhungGio(item)}
                                       />
                                       <label
                                         className="btn btn-outline-primary"
@@ -241,6 +284,7 @@ const ChiTietSan = () => {
                                       <label
                                         className="btn btn-outline-danger disable"
                                         htmlFor={item._id}
+                                        style={{ color: "red" }}
                                       >
                                         {item.thoigianbatdau +
                                           " - " +
@@ -252,19 +296,6 @@ const ChiTietSan = () => {
                               }
                             })}
                           </div>
-                          {/* <select className="form-control" name="" id="">
-                            {khunggio.map((item, index) => {
-                              if (!khungGioDaDat.includes(item._id)) {
-                                return (
-                                  <option value={item._id} key={index}>
-                                    {item.thoigianbatdau +
-                                      " - " +
-                                      item.thoigianketthuc}
-                                  </option>
-                                );
-                              }
-                            })}
-                          </select> */}
                         </div>
                       </div>
                       <div
@@ -292,91 +323,117 @@ const ChiTietSan = () => {
                                 <span aria-hidden="true">×</span>
                               </button>
                             </div>
-                            {/* <c:choose>
-                              <c:when test="${sessionScope.user  == null}">
-                                <div className="modal-body">
-                                  <h3>Bạn phải đăng nhập để tiếp tục</h3>
-                                  <a href="/login" className="btn btn-success">
-                                    Đến trang đăng nhập
-                                  </a>
-                                </div>
-                                <div className="modal-footer">
-                                  <button
-                                    type="button"
-                                    className="btn btn-secondary"
-                                    data-dismiss="modal"
-                                  >
-                                    Đóng
-                                  </button>
-                                </div>
-                              </c:when>
-                              <c:when test="${sessionScope.user != null}">
-                                <div className="modal-body">
-                                  <div className="modal-infor d-flex">
-                                    <label className="font-weight-bold">
-                                      Họ Tên:
-                                    </label>
-                                    <p>
-                                      ${"{"}sessionScope.user.tenNguoiDung{"}"}
-                                    </p>
-                                  </div>
-                                  <div className="modal-infor d-flex">
-                                    <label className="font-weight-bold">
-                                      Email:
-                                    </label>
-                                    <p>
-                                      ${"{"}sessionScope.user.email{"}"}
-                                    </p>
-                                  </div>
-                                  <div className="modal-infor d-flex">
-                                    <label className="font-weight-bold">
-                                      SĐT:
-                                    </label>
-                                    <p>
-                                      ${"{"}sessionScope.user.sdt{"}"}
-                                    </p>
-                                  </div>
-                                  <div className="modal-infor d-flex">
-                                    <label className="font-weight-bold">
-                                      Ngày đá:
-                                    </label>
-                                    <p />
-                                  </div>
-                                  <label className="font-weight-bold">
-                                    Khung giờ đã chọn:
-                                  </label>
-                                  <div className="row g-3 time-list"></div>
-                                  <br />
-                                  <div className="modal-infor d-flex justify-content-between mt-2">
-                                    <h4 className="font-weight-bold">
-                                      Tổng tiền:
-                                    </h4>
-                                    <h4
-                                      id="total-money"
-                                      className="font-weight-bold text-danger"
-                                    >
-                                      0<span>đ</span>
-                                    </h4>
-                                  </div>
-                                </div>
-                                <div className="modal-footer">
-                                  <button
-                                    type="button"
-                                    className="btn btn-secondary"
-                                    data-dismiss="modal"
-                                  >
-                                    Đóng
-                                  </button>
-                                  <a
-                                    type="button"
-                                    id="btn-confirm"
-                                    className="btn btn-primary"
-                                  >
-                                    Xác nhận
-                                  </a>
-                                </div>
-                              </c:when>
-                            </c:choose> */}
+                            {(() => {
+                              if (idUser === null) {
+                                return (
+                                  <>
+                                    <div className="modal-body">
+                                      <h3>Bạn phải đăng nhập để tiếp tục</h3>
+                                      <a
+                                        href="/login"
+                                        className="btn btn-success"
+                                      >
+                                        Đến trang đăng nhập
+                                      </a>
+                                    </div>
+                                    <div className="modal-footer">
+                                      <button
+                                        type="button"
+                                        className="btn btn-secondary"
+                                        data-dismiss="modal"
+                                      >
+                                        Đóng
+                                      </button>
+                                    </div>
+                                  </>
+                                );
+                              } else {
+                                return (
+                                  <>
+                                    <div className="modal-body">
+                                      <div className="modal-infor d-flex">
+                                        <label className="font-weight-bold">
+                                          Họ Tên:
+                                        </label>
+                                        <p>{userName}</p>
+                                      </div>
+                                      <div className="modal-infor d-flex">
+                                        <label className="font-weight-bold">
+                                          Ngày đá:
+                                        </label>
+                                        <p>{ngayDa}</p>
+                                      </div>
+                                      <label className="font-weight-bold">
+                                        Khung giờ đã chọn:
+                                      </label>
+                                      <div className="row g-3 time-list">
+                                        {khungGioDaChon.map((item, index) => {
+                                          return (
+                                            <div
+                                              className="col-md-2"
+                                              style={{
+                                                padding: "0px",
+                                                width: "140px",
+                                              }}
+                                              key={index}
+                                            >
+                                              <input
+                                                type="checkbox"
+                                                className="btn-check"
+                                                id={item._id}
+                                                autoComplete="off"
+                                                value={item._id}
+                                                onChange={() =>
+                                                  chonKhungGio(item)
+                                                }
+                                              />
+                                              <label
+                                                className="btn btn-outline-primary"
+                                                htmlFor={item._id}
+                                              >
+                                                {item.thoigianbatdau +
+                                                  " - " +
+                                                  item.thoigianketthuc}
+                                              </label>
+                                            </div>
+                                          );
+                                        })}
+                                      </div>
+                                      <br />
+                                      <div className="modal-infor d-flex justify-content-between mt-2">
+                                        <h4 className="font-weight-bold">
+                                          Tổng tiền:
+                                        </h4>
+                                        <h4
+                                          id="total-money"
+                                          className="font-weight-bold text-danger"
+                                        >
+                                          {tongTien}
+                                          <span>đ</span>
+                                        </h4>
+                                      </div>
+                                    </div>
+                                    <div className="modal-footer">
+                                      <button
+                                        type="button"
+                                        className="btn btn-secondary"
+                                        data-dismiss="modal"
+                                      >
+                                        Đóng
+                                      </button>
+                                      <button
+                                        type="button"
+                                        id="btn-confirm"
+                                        className="btn btn-primary"
+                                        onClick={() => xacNhanDatSan()}
+                                      >
+                                        Xác nhận
+                                      </button>
+                                    </div>
+                                  </>
+                                );
+                              }
+                            })()}
                           </div>
                         </div>
                       </div>
