@@ -152,9 +152,137 @@ function Home() {
                 <p className="read-more center"><a href="/tapchi/detail/{{$item->IdTinTuc}}" className="btn btn-primary">Đọc thêm</a></p>
               </div>
             </div>
-            {/* /.product*/}
+       
           </div>
-          {/* /.product-slider*/}
+          <div className="item">
+            <div className="product">
+              <div className="flip-container">
+                <div className="flipper">
+                  <div className="front"><a href="detail.html"><img src="img/product2.jpg" alt className="img-fluid" /></a>
+                  </div>
+                  <div className="back"><a href="detail.html"><img src="img/product2_2.jpg" alt className="img-fluid" /></a>
+                  </div>
+                </div>
+              </div><a href="detail.html" className="invisible"><img src="img/product2.jpg" alt className="img-fluid" /></a>
+              <div className="text">
+                <h3><a href="detail.html">White Blouse Armani</a></h3>
+                <p className="price">
+                  <del>$280</del>$143.00
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="item">
+            <div className="product">
+              <div className="flip-container">
+                <div className="flipper">
+                  <div className="front"><a href="detail.html"><img src="img/product3.jpg" alt className="img-fluid" /></a>
+                  </div>
+                  <div className="back"><a href="detail.html"><img src="img/product3_2.jpg" alt className="img-fluid" /></a>
+                  </div>
+                </div>
+              </div><a href="detail.html" className="invisible"><img src="img/product3.jpg" alt className="img-fluid" /></a>
+              <div className="text">
+                <h3><a href="detail.html">Black Blouse Versace</a></h3>
+                <p className="price">
+                  <del />$143.00
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="item">
+            <div className="product">
+              <div className="flip-container">
+                <div className="flipper">
+                  <div className="front"><a href="detail.html"><img src="img/product3.jpg" alt className="img-fluid" /></a>
+                  </div>
+                  <div className="back"><a href="detail.html"><img src="img/product3_2.jpg" alt className="img-fluid" /></a>
+                  </div>
+                </div>
+              </div><a href="detail.html" className="invisible"><img src="img/product3.jpg" alt className="img-fluid" /></a>
+              <div className="text">
+                <h3><a href="detail.html">Black Blouse Versace</a></h3>
+                <p className="price">
+                  <del />$143.00
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="item">
+            <div className="product">
+              <div className="flip-container">
+                <div className="flipper">
+                  <div className="front"><a href="detail.html"><img src="img/product2.jpg" alt className="img-fluid" /></a>
+                  </div>
+                  <div className="back"><a href="detail.html"><img src="img/product2_2.jpg" alt className="img-fluid" /></a>
+                  </div>
+                </div>
+              </div><a href="detail.html" className="invisible"><img src="img/product2.jpg" alt className="img-fluid" /></a>
+              <div className="text">
+                <h3><a href="detail.html">White Blouse Versace</a></h3>
+                <p className="price">
+                  <del />$143.00
+                </p>
+              </div>
+              <div className="ribbon new">
+              
+              </div>
+            </div>
+          </div>
+          <div className="item">
+            <div className="product">
+              <div className="flip-container">
+                <div className="flipper">
+                  <div className="front"><a href="detail.html"><img src="img/product1.jpg" alt className="img-fluid" /></a>
+                  </div>
+                  <div className="back"><a href="detail.html"><img src="img/product1_2.jpg" alt className="img-fluid" /></a>
+                  </div>
+                </div>
+              </div><a href="detail.html" className="invisible"><img src="img/product1.jpg" alt className="img-fluid" /></a>
+              <div className="text">
+                <h3><a href="detail.html">Fur coat</a></h3>
+                <p className="price">
+                  <del />$143.00
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="item">
+            <div className="product">
+              <div className="flip-container">
+                <div className="flipper">
+                  <div className="front"><a href="detail.html"><img src="img/product2.jpg" alt className="img-fluid" /></a>
+                  </div>
+                  <div className="back"><a href="detail.html"><img src="img/product2_2.jpg" alt className="img-fluid" /></a>
+                  </div>
+                </div>
+              </div><a href="detail.html" className="invisible"><img src="img/product2.jpg" alt className="img-fluid" /></a>
+              <div className="text">
+                <h3><a href="detail.html">White Blouse Armani</a></h3>
+                <p className="price">
+                  <del>$280</del>$143.00
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="item">
+            <div className="product">
+              <div className="flip-container">
+                <div className="flipper">
+                  <div className="front"><a href="detail.html"><img src="img/product3.jpg" alt className="img-fluid" /></a>
+                  </div>
+                  <div className="back"><a href="detail.html"><img src="img/product3_2.jpg" alt className="img-fluid" /></a>
+                  </div>
+                </div>
+              </div><a href="detail.html" className="invisible"><img src="img/product3.jpg" alt className="img-fluid" /></a>
+              <div className="text">
+                <h3><a href="detail.html">Black Blouse Versace</a></h3>
+                <p className="price">
+                  <del />$143.00
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
         {/* /.container*/}
       </div>
