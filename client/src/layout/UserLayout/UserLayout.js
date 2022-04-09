@@ -11,6 +11,8 @@ import PhieuDatSan from "../../pages/user/PhieuDatSan";
 import GioiThieu from "../../pages/user/GioiThieu";
 import LienHe from "../../pages/user/LienHe";
 
+import TinTuc from "../../pages/user/Tapchi/TapChi";
+import ChiTietTinTuc from "../../pages/user/Tapchi/ChiTietTapChi";
 
 const UserLayout = () => {
   return (
@@ -28,6 +30,8 @@ const UserLayout = () => {
               <Route path="login" element={<LoginForm />}></Route>
               <Route path="register" element={<RegisterForm />}></Route>
               <Route path="phieudatsan" element={<PhieuDatSan />}></Route>
+              <Route path="tintuc" element={<TinTuc />}></Route>
+              <Route path="tintuc/:id" element={<ChiTietTinTuc />}></Route>
             </Routes>
           </div>
         </section>

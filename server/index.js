@@ -8,6 +8,8 @@ const bodyParser = require('body-parser');
 
 const authRouter = require('./routes/auth')
 const postRouter = require('./routes/post')
+const loaitintucRouter = require('./routes/loaitintuc')
+const tintucRouter = require('./routes/tintuc')
 const loaisanRouter = require('./routes/loaisan')
 const sanRouter = require('./routes/san')
 const khunggioRouter = require('./routes/khunggio')
@@ -47,6 +49,8 @@ const connectDB = async () => {
 
   app.use('/api/auth',authRouter)
   app.use('/api/posts',postRouter)
+  app.use('/api/loaitintuc', loaitintucRouter )
+  app.use('/api/tintuc', tintucRouter)
   app.use('/api/loaiSan',loaisanRouter)
   app.use('/api/sans',sanRouter)
   app.use('/api/khungGio',khunggioRouter)
