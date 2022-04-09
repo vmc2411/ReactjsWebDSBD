@@ -82,7 +82,7 @@ const Sidebar = () => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to={'/admin/san'} className="nav-link">
+                            <Link to={'/admin/hoadon'} className="nav-link">
                                 <i className="nav-icon fas fa-columns" />
                                 <p>
                                     Hóa đơn

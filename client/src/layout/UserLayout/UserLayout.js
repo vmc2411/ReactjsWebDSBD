@@ -8,11 +8,6 @@ import Home from "../../pages/user/Home";
 import LoginForm from "../../pages/user/DangNhapUser/LoginForm";
 import RegisterForm from "../../pages/user/DangNhapUser/RegisterForm";
 import PhieuDatSan from "../../pages/user/PhieuDatSan";
-import GioiThieu from "../../pages/user/GioiThieu";
-import LienHe from "../../pages/user/LienHe";
-
-import TinTuc from "../../pages/user/Tapchi/TapChi";
-import ChiTietTinTuc from "../../pages/user/Tapchi/ChiTietTapChi";
 import TinTuc from "../../pages/user/Tapchi/TapChi";
 import ChiTietTinTuc from "../../pages/user/Tapchi/ChiTietTapChi";
 import GioiThieu from "../../pages/user/GioiThieu";
