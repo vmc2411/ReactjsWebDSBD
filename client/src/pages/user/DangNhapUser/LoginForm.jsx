@@ -1,5 +1,3 @@
-import Header from "../../../layout/UserLayout/Header";
-import Footer from "../../../layout/UserLayout/Footer";
 import React from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
