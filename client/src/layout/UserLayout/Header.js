@@ -48,9 +48,9 @@ const Header = () => {
       </div>
       <nav className="navbar navbar-expand-lg">
         <div className="container">
-          <Link to={'/'} className="navbar-brand home px-4">
-          <Logo />
-            <img src="/img/logo-small.png" alt="Obaju logo" className="d-inline-block d-md-none" />
+          <Link to={'/'} className="navbar-brand home">
+            <img src="picture/img/LogoDTHCV.svg" className="d-none d-md-inline-block" />
+            <img src="picture/img/LogoDTHCV.svg" alt="Obaju logo" className="d-inline-block d-md-none" />
             <span className="sr-only">Obaju - go to homepage</span>
           </Link>
           <div className="navbar-buttons">
