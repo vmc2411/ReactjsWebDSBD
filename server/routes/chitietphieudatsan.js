@@ -49,4 +49,22 @@ router.route('/').get(async function (req, res) {
     });
 });
 
+//get all phieu dat san
+router.route('/detail/:idphieu').get(async function (req, res) {
+    const idphieu = req.params.idphieu;
+    try {
+        let chitietphieudatsan; 
+        if (idphieu) {
+            chitietphieudatsan = await chitietphieudatsanModel.find({PhieuDatSan: idphieu});
+            res.json(chitietphieudatsan);
+        } else {
+            chitietphieudatsan = await chitietphieudatsanModel.find();
+            res.json(chitietphieudatsan);
+        }
+      
+    } catch (error) {
+        console.log(error)
+        res.status(500).json('Internal server error');
+    }
+});
 module.exports = router;

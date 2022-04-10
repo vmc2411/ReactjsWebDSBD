@@ -66,24 +66,29 @@ const Header = () => {
 
           </div>
           <div id="navigation" className="collapse navbar-collapse">
-            <ul className="navbar-nav mr-auto px-5">
+            <ul className="navbar-nav mr-auto px-4">
               <li className="nav-item"><Link to={'/'} className="nav-link ">Trang chủ</Link></li>
               <li className="nav-item"><Link to={'/gioithieu'} className="nav-link">Giới thiệu</Link></li>
               <li className="nav-item"><Link to={'/san'} className=" nav-link">Đặt sân</Link></li>
               <li className="nav-item"><Link to={'/tintuc'} className="nav-link ">Tin tức</Link></li>
               <li className="nav-item"><Link to={'/lienhe'} className="nav-link">Liên hệ</Link></li>
             </ul>
-            <div className="navbar-buttons d-flex justify-content-end">
-              <div id="search-not-mobile" className="navbar-collapse collapse" />
-              <div id="basket-overview" className="navbar-collapse collapse d-none d-lg-block">
-                <Link to="/phieudatsan" className="btn btn-primary navbar-btn">
-                  <span>Sân đã đặt</span>
-                </Link>
-              </div>
-              <Link data-toggle="collapse" to={'/'} className="btn navbar-btn btn-primary d-none d-lg-inline-block">
-                <span className="sr-only">Toggle search</span>
-                <i className="fa fa-search" />
-              </Link>
+            <div className="collapse navbar-collapse">
+              {(() => {
+                if (accestoken !== null) {
+                  return (
+                    <>
+                      <div id="search-not-mobile" className="navbar-collapse collapse" />
+                      <div id="basket-overview" className="navbar-collapse collapse d-none d-lg-block">
+                        <Link to="/phieudatsan" className="btn btn-primary navbar-btn">
+                          <span>Sân đã đặt</span>
+                        </Link>
+                      </div>
+                    </>
+                  );
+                }
+              })()}
+
 
             </div>
           </div>
