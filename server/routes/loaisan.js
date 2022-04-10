@@ -2,6 +2,7 @@ const express = require('express');
 
 const app = express();
 const router = express.Router();
+let sanModel = require("../models/San");
 let loaisanModel = require("../models/Loaisan");
 
 //create
@@ -38,6 +39,7 @@ router.route('/update/:id').put(function (req, res) {
 
 //delete
 router.route('/delete/:id').delete(function (req, res) {
+  sanModel.find({LoaiSan: req.params.id }).remove().exec();
   loaisanModel.findByIdAndRemove({ _id: req.params.id }, function (err, deletedloaisan) {
     if (err) res.json(err);
     else res.json({
