@@ -1,5 +1,3 @@
-import Header from "../../../layout/UserLayout/Header";
-import Footer from "../../../layout/UserLayout/Footer";
 import React from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -17,6 +15,7 @@ const LoginForm = () => {
       .post("/api/auth/login", request)
       .then((res) => {
         const result = res.data.message;
+        alert(result);
         window.localStorage.setItem('iduser', res.data._id)
         window.localStorage.setItem('fullname', res.data.fullname)
         window.localStorage.setItem('accesstoken', res.data.accessToken)
