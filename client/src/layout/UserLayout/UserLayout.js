@@ -13,10 +13,6 @@ import LienHe from "../../pages/user/LienHe";
 
 import TinTuc from "../../pages/user/Tapchi/TapChi";
 import ChiTietTinTuc from "../../pages/user/Tapchi/ChiTietTapChi";
-import TinTuc from "../../pages/user/Tapchi/TapChi";
-import ChiTietTinTuc from "../../pages/user/Tapchi/ChiTietTapChi";
-import GioiThieu from "../../pages/user/GioiThieu";
-import LienHe from "../../pages/user/LienHe";
 
 
 const UserLayout = () => {
