@@ -15,6 +15,7 @@ const LoginForm = () => {
       .post("/api/auth/login", request)
       .then((res) => {
         const result = res.data.message;
+        alert(result);
         window.localStorage.setItem('iduser', res.data._id)
         window.localStorage.setItem('fullname', res.data.fullname)
         window.localStorage.setItem('accesstoken', res.data.accessToken)

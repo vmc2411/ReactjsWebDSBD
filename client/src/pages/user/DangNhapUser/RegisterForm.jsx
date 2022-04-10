@@ -1,5 +1,3 @@
-import Header from "../../../layout/UserLayout/Header";
-import Footer from "../../../layout/UserLayout/Footer";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as Logo } from "../../../assets/images/user/registerpic.svg";

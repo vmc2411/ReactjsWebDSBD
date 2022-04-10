@@ -26,6 +26,10 @@ import ListTintuc from '../../pages/admin/Tintuc/ListTintuc';
 import ThemTintuc from '../../pages/admin/Tintuc/AddTintuc';
 import EditTinTuc from '../../pages/admin/Tintuc/EditTintuc';
 
+import ListTaiKhoan from '../../pages/admin/TaiKhoan/ListTaiKhoan';
+import AddTaiKhoan from '../../pages/admin/TaiKhoan/AddTaiKhoan';
+import EditTaiKhoan from '../../pages/admin/TaiKhoan/EditTaiKhoan'
+
 const Dashboard = () => {
     return (
         <div className='wrapper'>
@@ -55,7 +59,11 @@ const Dashboard = () => {
                             <Route path='tintuc' element={<ListTintuc/>}></Route>
                             <Route path='tintuc/add' element={<ThemTintuc/>}></Route>
                             <Route path='tintuc/edit/:id' element={<EditTinTuc/>}></Route>
-                    
+
+                            <Route path='taikhoan' element={<ListTaiKhoan/>}></Route>
+                            <Route path='taikhoan/add' element={<AddTaiKhoan/>}></Route>
+                            <Route path='taikhoan/edit/:id' element={<EditTaiKhoan/>}></Route>
+
                         </Routes>
                     </div>
                 </section>

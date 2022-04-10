@@ -188,3 +188,9 @@ GET http://localhost:3000/api/chitietphieudatsan?idSan=623f125c93169afa4e4fe71e&
 
 ###
 GET http://localhost:8800/api/loaitintuc
+
+###
+GET http://localhost:8800/api/auth
+
+###
+GET http://localhost:8800/api/auth/6231edddd5020265c65cffa0

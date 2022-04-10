@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+
 const argon2 = require("argon2");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
@@ -139,6 +140,46 @@ router.post("/admin/login", async (req, res) => {
       .status(500)
       .json({ success: false, message: "Username or Password was wrong!" });
   }
+});
+
+//update
+router.route('/update/:id').put(function (req, res) {
+
+  User.findById(req.params.id, async function (err, taikhoan) {
+      if (!taikhoan)
+          return next(new Error('Không tìm được tài khoản'));
+      else {
+          taikhoan.fullname = req.body.fullname;
+          taikhoan.username = req.body.username;
+          taikhoan.isAdmin = req.body.isAdmin;
+          taikhoan.save().then(taikhoan => {
+              res.json('TaiKhoan Updated Successfully');
+          })
+              .catch(err => {
+                  res.status(400).send("Unable To Update TaiKhoan");
+              });
+      }
+  });
+});
+
+//get all taikhoan
+router.route('/').get(function (req, res) {
+  User.find(function (err, taikhoan) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.json(taikhoan);
+    }
+  });
+});
+
+//get byid taikhoan
+router.route('/:id').get(function (req, res) {
+  let id = req.params.id;
+  User.findById(id, function (err, taikhoan) {
+    res.json(taikhoan);
+  });
 });
 
 module.exports = router;
