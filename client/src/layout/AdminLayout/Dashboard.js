@@ -12,10 +12,19 @@ import Add from '../../pages/admin/Loaisan/Add';
 import Edit from '../../pages/admin/Loaisan/Edit';
 import Index from '../../pages/admin/Loaisan/Index';
 
-import ListKhungGio from '../../pages/admin/Khunggio/ListKhungGio';
-import AddKhungGio from '../../pages/admin/Khunggio/AddKhungGio';
-import EditKhungGio from '../../pages/admin/Khunggio/EditKhungGio';
+import ListKhungGio from '../../pages/admin/Khunggio/ListKhungGio'
+import AddKhungGio from '../../pages/admin/Khunggio/AddKhungGio'
+import EditKhungGio from '../../pages/admin/Khunggio/EditKhungGio'
 
+import HoaDon from '../../pages/admin/HoaDon/HoaDon'
+
+import ListLoaitintuc from '../../pages/admin/Loaitintuc/ListLoaitintuc';
+import AddLoaitintuc from '../../pages/admin/Loaitintuc/AddLoaitintuc';
+import EditLoaitintuc from '../../pages/admin/Loaitintuc/EditLoaitintuc';
+
+import ListTintuc from '../../pages/admin/Tintuc/ListTintuc';
+import ThemTintuc from '../../pages/admin/Tintuc/AddTintuc';
+import EditTinTuc from '../../pages/admin/Tintuc/EditTintuc';
 
 const Dashboard = () => {
     return (
@@ -37,6 +46,16 @@ const Dashboard = () => {
                             <Route path='khunggio' element={<ListKhungGio/>}></Route>
                             <Route path='khunggio/add' element={<AddKhungGio/>}></Route>
                             <Route path='khunggio/edit/:id' element={<EditKhungGio/>}></Route>
+
+                            <Route path='hoadon' element={<HoaDon/>}></Route>
+                            <Route path='loaitintuc' element={<ListLoaitintuc/>}></Route>
+                            <Route path='loaitintuc/add' element={<AddLoaitintuc/>}></Route>
+                            <Route path='loaitintuc/edit/:id' element={<EditLoaitintuc/>}></Route>
+
+                            <Route path='tintuc' element={<ListTintuc/>}></Route>
+                            <Route path='tintuc/add' element={<ThemTintuc/>}></Route>
+                            <Route path='tintuc/edit/:id' element={<EditTinTuc/>}></Route>
+                    
                         </Routes>
                     </div>
                 </section>

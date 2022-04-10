@@ -38,9 +38,7 @@ Authorization: Kail eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWR
     "img": "react2"
 }
 
-###
 
-GET http://localhost:8800/api/posts
 
 ###
 
@@ -60,6 +58,15 @@ Authorization: Kail eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWR
 DELETE http://localhost:8800/api/posts/62320f30d3afff5877dc2ba5
 Authorization: Kail eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWRkZGQ1MDIwMjY1YzY1Y2ZmYTAiLCJpYXQiOjE2NDc0NDU2NzB9.r_hoK-m8TVXX5GbfecchPehc_vyEUggeyQ0kY3NwS3c
 
+
+###
+POST http://localhost:8800/api/loaitintuc/add
+Content-Type: application/json
+Authorization: Kail eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWRkZGQ1MDIwMjY1YzY1Y2ZmYTAiLCJpYXQiOjE2NDc0NDU2NzB9.r_hoK-m8TVXX5GbfecchPehc_vyEUggeyQ0kY3NwS3c
+
+{
+    "tenloaitintuc": "bóng đá ngoại hạng anh"
+}
 ###
 
 GET http://localhost:8800/api/sans
@@ -77,6 +84,9 @@ Content-Type: application/json
 }
 
 ###
+
+GET http://localhost:8800/api/loaitintuc
+Authorization: Kail eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWRkZGQ1MDIwMjY1YzY1Y2ZmYTAiLCJpYXQiOjE2NDc0NDY0NTd9.WdQVAxYyJeJDbzmW5zuV4tQibNJ9e0ZkjmgLRhFdJi8
 
 GET http://localhost:8800/api/sans
 ###
@@ -138,6 +148,10 @@ GET http://localhost:8800/api/hoadon
 
 ###
 
+DELETE  http://localhost:8800/api/hoadon/delete/6249abcab762aac77dad904b
+
+###
+
 POST http://localhost:8800/api/phieudatsan/add
 Content-Type: application/json
 
@@ -150,6 +164,7 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:8800/api/phieudatsan/delete/6245d012707f932ec247c390
+
 
 ###
 GET http://localhost:8800/api/phieudatsan
@@ -169,3 +184,11 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/api/chitietphieudatsan?idSan=623f125c93169afa4e4fe71e&ngayda=2022-04-02
+
+
+###
+GET http://localhost:8800/api/loaitintuc
+
+
+###
+GET http://localhost:8800/api/tintuc

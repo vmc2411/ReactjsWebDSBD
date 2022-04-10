@@ -2,7 +2,7 @@ import Header from "../../../layout/UserLayout/Header";
 import Footer from "../../../layout/UserLayout/Footer";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-
+import { ReactComponent as Logo } from "../../../assets/images/user/registerpic.svg";
 const RegisterForm = () => {
 
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ const RegisterForm = () => {
       <div className="container">
         <div class="row py-5 mt-4 align-items-center">
           <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
-            <img src="/client/src/images/wallpaper/wallpaper_football.jpg" alt="" class="img-fluid mb-3 d-none d-md-block" />
+          <Logo />
           </div>
           <div class="col-md-7 col-lg-6 ml-auto">
             <div class="row">

@@ -3,10 +3,10 @@ import Footer from "../../../layout/UserLayout/Footer";
 import React from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { ReactComponent as Logo } from "../../../assets/images/user/loginpic.svg";
 
 const LoginForm = () => {
   const navigate = useNavigate();
-
   const handleSubmit = (event) => {
     event.preventDefault();
     let request = {
@@ -25,11 +25,13 @@ const LoginForm = () => {
       })
       .catch((err) => alert(err.response.data.message));
   };
+
   return (
     <>
       <div className="container">
         <div class="row py-5 mt-4 align-items-center">
           <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
+          <Logo />
           </div>
           <div class="col-md-7 col-lg-6 ml-auto">
             <div class="row">
