@@ -12,7 +12,7 @@ import TinTuc from "../../pages/user/Tapchi/TapChi";
 import ChiTietTinTuc from "../../pages/user/Tapchi/ChiTietTapChi";
 import GioiThieu from "../../pages/user/GioiThieu";
 import LienHe from "../../pages/user/LienHe";
-
+import ChiTietPhieuDatSan from "../../pages/user/ChiTietPhieuDatSan";
 
 const UserLayout = () => {
   return (
@@ -32,6 +32,7 @@ const UserLayout = () => {
               <Route path="phieudatsan" element={<PhieuDatSan />}></Route>
               <Route path="tintuc" element={<TinTuc />}></Route>
               <Route path="tintuc/:id" element={<ChiTietTinTuc />}></Route>
+              <Route path="phieudatsan/detail/:id" element={<ChiTietPhieuDatSan />}></Route>
             </Routes>
           </div>
         </section>

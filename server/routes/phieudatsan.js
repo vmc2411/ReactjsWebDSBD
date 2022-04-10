@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 let phieudatsanModel = require("../models/PhieuDatSan");
-
+var LocalStorage = require('node-localstorage').LocalStorage,
+localStorage = new LocalStorage('./scratch');
 //create
 router.route('/add').post(function (req, res) {
     const { TongTien, IDHoaDon, userID } = req.body;
@@ -44,5 +45,17 @@ router.route('/').get(async function (req, res) {
         }
     });
 });
-
+//get all chi tiet phieu dat san
+router.route('/lichsudatsan').post(async function (req, res) {
+    const idUser = req.body.iduser;
+    console.log(idUser);
+    try {
+        let history; 
+        history = await phieudatsanModel.find({user: idUser });
+            res.json(history);
+    } catch (error) {
+        console.log(error)
+        res.status(500).json('Internal server error');
+    }
+});
 module.exports = router;
