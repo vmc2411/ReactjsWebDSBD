@@ -15,6 +15,7 @@ const LoginForm = () => {
       .post("/api/auth/admin/login", request)
       .then((res) => {
         const result = res.data.message;
+        alert(result);
         window.localStorage.setItem('idadmin', res.data._id)
         window.localStorage.setItem('fullnameadmin', res.data.fullname)
         window.localStorage.setItem('accesstokenadmin', res.data.accessToken)
@@ -29,17 +30,16 @@ const LoginForm = () => {
         <main className="form-signin">
           <form onSubmit={handleSubmit}>
             {/* <img className="mb-4" src="/client/src/assets/images/wallpaper/wallpaper_football.jpg" alt width={72} height={57} /> */}
-            <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
+            <h1 className="h3 mb-3 fw-normal">Đăng nhập ADMIN</h1>
             <div className="form-floating">
-              <input type="text" name="email" className="form-control" id="inputUsername" placeholder="name@example.com" />
-              <label htmlFor="floatingInput">Email address</label>
+              <input type="text" name="username" className="form-control" id="inputUsername" />
+              <label htmlFor="floatingInput">Tên đăng nhập</label>
             </div>
             <div className="form-floating">
-              <input type="password" name="password" className="form-control" id="inputPassword" placeholder="Password" />
-              <label htmlFor="floatingPassword">Password</label>
+              <input type="password" name="password" className="form-control" id="inputPassword" />
+              <label htmlFor="floatingPassword">Mật khẩu</label>
             </div>
             <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-            <p className="mt-5 mb-3 text-muted">© 2017–2021</p>
           </form>
         </main>
       </div>
