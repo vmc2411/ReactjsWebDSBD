@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./login.css"
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -26,22 +27,22 @@ const LoginForm = () => {
   };
   return (
     <>
-      <div className="text-center">
-        <main className="form-signin">
-          <form onSubmit={handleSubmit}>
-            {/* <img className="mb-4" src="/client/src/assets/images/wallpaper/wallpaper_football.jpg" alt width={72} height={57} /> */}
-            <h1 className="h3 mb-3 fw-normal">Đăng nhập ADMIN</h1>
-            <div className="form-floating">
-              <input type="text" name="username" className="form-control" id="inputUsername" />
+      <div className="login">
+        <div className="loginWrapper">
+          <div className="loginleft">
+            <img src="/picture/img/San-bong-1.jpg" alt="" className="imgback" />
+          </div>
+          <div className="loginRight">
+            <h3 className="logologin">Đăng Nhập Admin</h3>
+            <form className="loginBox" onSubmit={handleSubmit}>
               <label htmlFor="floatingInput">Tên đăng nhập</label>
-            </div>
-            <div className="form-floating">
-              <input type="password" name="password" className="form-control" id="inputPassword" />
+              <input type="text" name="username" className="form-control" id="inputUsername" />
               <label htmlFor="floatingPassword">Mật khẩu</label>
-            </div>
-            <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-          </form>
-        </main>
+              <input type="password" name="password" className="form-control" id="inputPassword" />
+              <button className="w-100 btn btn-lg btn-primary" type="submit">Đăng nhập</button>
+            </form>
+          </div>
+        </div>
       </div>
     </>
   );
