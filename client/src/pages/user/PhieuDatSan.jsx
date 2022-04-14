@@ -5,16 +5,16 @@ import { Link } from "react-router-dom";
 const PhieuDatSan = () => {
   const [lichsus, setLichsus] = useState([]);
   useEffect(() => {
-    
-
     axios
-      .post("api/phieudatsan/lichsudatsan", {iduser: window.localStorage.getItem("iduser")})
+      .post("api/phieudatsan/lichsudatsan", {
+        iduser: window.localStorage.getItem("iduser"),
+      })
       .then((res) => {
         return res.data;
       })
       .then((data) => {
-       console.log(data);
-       setLichsus(data);
+        console.log(data);
+        setLichsus(data);
       });
   }, []);
   const columns = [
@@ -41,12 +41,12 @@ const PhieuDatSan = () => {
   ];
   return (
     <>
-      <div className="container"> 
-         <h3>Lịch sử đặt sân</h3>
-      <DataTable columns={columns} data={lichsus} pagination></DataTable>
+      <div className="container">
+        <h3>Lịch sử đặt sân</h3>
+        <DataTable columns={columns} data={lichsus} pagination></DataTable>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default PhieuDatSan
+export default PhieuDatSan;

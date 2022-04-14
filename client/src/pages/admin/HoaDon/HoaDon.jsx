@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import DataTable from "react-data-table-component";
-import { Link } from "react-router-dom";
 const HoaDon = () => {
   const [hoadons, setHoaDons] = useState([]);
 
@@ -78,8 +77,8 @@ const HoaDon = () => {
         if (row["TrangThai"]) {
           return (
             <>
-              <button className="btn btn-danger" onClick={() => Update(row)}>
-                <i class="fas fa-toggle-off"></i>
+              <button className="btn btn-success" onClick={() => Update(row)}>
+                <i class="fas fa-toggle-on"></i>
               </button>
               <button className="btn btn-danger" onClick={() => Delete(row)}>
                 <i className="fas fa-times-circle"></i>
@@ -89,8 +88,8 @@ const HoaDon = () => {
         } else {
           return (
             <>
-              <button className="btn btn-success" onClick={() => Update(row)}>
-                <i class="fas fa-toggle-on"></i>
+              <button className="btn btn-danger" onClick={() => Update(row)}>
+                <i class="fas fa-toggle-off"></i>
               </button>
               <button className="btn btn-danger" onClick={() => Delete(row)}>
                 <i className="fas fa-times-circle"></i>

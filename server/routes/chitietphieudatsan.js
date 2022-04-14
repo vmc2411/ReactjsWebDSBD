@@ -17,7 +17,7 @@ router.route('/add').post(function (req, res) {
     );
     newChitietPhieuDatSan.save()
         .then((chitietphieu) => {
-            res.status(200).json({ 'message': 'Thêm chi tiết phiếu thành công!' , chitietphieudatsan: chitietphieu});
+            res.status(200).json({ 'message': 'Thêm chi tiết phiếu thành công!', chitietphieudatsan: chitietphieu });
         })
         .catch(err => {
             res.status(400).send(err);
@@ -35,8 +35,8 @@ router.route('/delete/:id').delete(function (req, res) {
     });
 });
 
-//get all phieu dat san
-router.route('/').get(async function (req, res) {
+//get all chi tiet phieu dat san
+router.route('/').get(function (req, res) {
     const idsan = req.query.idSan;
     const ngayda = req.query.ngayda;
     chitietphieudatsanModel.find({ San: idsan, NgayDa: ngayda }, function (err, chitietphieudatsan) {
@@ -49,19 +49,12 @@ router.route('/').get(async function (req, res) {
     });
 });
 
-//get all phieu dat san
+//get all chi tiet phieu dat san
 router.route('/detail/:idphieu').get(async function (req, res) {
     const idphieu = req.params.idphieu;
     try {
-        let chitietphieudatsan; 
-        if (idphieu) {
-            chitietphieudatsan = await chitietphieudatsanModel.find({PhieuDatSan: idphieu});
-            res.json(chitietphieudatsan);
-        } else {
-            chitietphieudatsan = await chitietphieudatsanModel.find();
-            res.json(chitietphieudatsan);
-        }
-      
+        let chitietphieudatsan = await chitietphieudatsanModel.find({ PhieuDatSan: idphieu }).populate('San').populate('Khunggio');
+        res.json(chitietphieudatsan);
     } catch (error) {
         console.log(error)
         res.status(500).json('Internal server error');

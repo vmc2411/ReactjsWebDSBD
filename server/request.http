@@ -194,3 +194,6 @@ GET http://localhost:8800/api/auth
 
 ###
 GET http://localhost:8800/api/auth/6231edddd5020265c65cffa0
+
+###
+GET http://localhost:8800/api/chitietphieudatsan/detail/6258135338beb4ab83e3d2d8
