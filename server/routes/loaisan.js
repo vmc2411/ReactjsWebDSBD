@@ -1,6 +1,4 @@
 const express = require('express');
-
-const app = express();
 const router = express.Router();
 let sanModel = require("../models/San");
 let loaisanModel = require("../models/Loaisan");

@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
 let phieudatsanModel = require("../models/PhieuDatSan");
-var LocalStorage = require('node-localstorage').LocalStorage,
-    localStorage = new LocalStorage('./scratch');
+
 //create
 router.route('/add').post(function (req, res) {
     const { TongTien, IDHoaDon, userID } = req.body;

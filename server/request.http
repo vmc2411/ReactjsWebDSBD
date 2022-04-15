@@ -27,32 +27,6 @@ Content-Type: application/json
     "password": "hiep3110"
 }
 
-POST http://localhost:8800/api/posts
-Content-Type: application/json
-Authorization: Kail eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWRkZGQ1MDIwMjY1YzY1Y2ZmYTAiLCJpYXQiOjE2NDc0NDU2NzB9.r_hoK-m8TVXX5GbfecchPehc_vyEUggeyQ0kY3NwS3c
-
-{
-    "title": "React2",
-    "desc": "React2",
-    "url": "React.com2",
-    "img": "react2"
-}
-
-
-
-###
-
-PUT  http://localhost:8800/api/posts/62320f30d3afff5877dc2ba5
-Content-Type: application/json
-Authorization: Kail eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWRkZGQ1MDIwMjY1YzY1Y2ZmYTAiLCJpYXQiOjE2NDc0NDU2NzB9.r_hoK-m8TVXX5GbfecchPehc_vyEUggeyQ0kY3NwS3c
-
-{
-    "title": "Update to post",
-    "desc": "Say bye",
-    "url": "zing.vn",
-    "img": "tr"
-}
-
 ###
 
 DELETE http://localhost:8800/api/posts/62320f30d3afff5877dc2ba5
@@ -62,7 +36,6 @@ Authorization: Kail eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWR
 ###
 POST http://localhost:8800/api/loaitintuc/add
 Content-Type: application/json
-Authorization: Kail eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWRkZGQ1MDIwMjY1YzY1Y2ZmYTAiLCJpYXQiOjE2NDc0NDU2NzB9.r_hoK-m8TVXX5GbfecchPehc_vyEUggeyQ0kY3NwS3c
 
 {
     "tenloaitintuc": "bóng đá ngoại hạng anh"
@@ -70,7 +43,6 @@ Authorization: Kail eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWR
 ###
 
 GET http://localhost:8800/api/sans
-Authorization: Kail eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWRkZGQ1MDIwMjY1YzY1Y2ZmYTAiLCJpYXQiOjE2NDc0NDY0NTd9.WdQVAxYyJeJDbzmW5zuV4tQibNJ9e0ZkjmgLRhFdJi8
 
 ###
 
@@ -86,7 +58,6 @@ Content-Type: application/json
 ###
 
 GET http://localhost:8800/api/loaitintuc
-Authorization: Kail eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjMxZWRkZGQ1MDIwMjY1YzY1Y2ZmYTAiLCJpYXQiOjE2NDc0NDY0NTd9.WdQVAxYyJeJDbzmW5zuV4tQibNJ9e0ZkjmgLRhFdJi8
 
 GET http://localhost:8800/api/sans
 ###
